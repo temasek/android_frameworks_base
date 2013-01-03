@@ -36,34 +36,32 @@
         android:enabled="false"
         >
 
-    <LinearLayout 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:id="@id/clock" 
-        android:singleLine="true" 
-        android:layout_centerVertical="true"
-        >
-
-    <com.android.systemui.statusbar.policy.Clock
-        android:id="@+id/clock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Clock"
-        android:layout_centerVertical="true"
-        android:clickable="true"
-        />
-
-        <com.android.systemui.statusbar.policy.CenterClock
-        android:id="@+id/clock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Clock"
-        />
-
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:id="@+id/clock" 
+            android:singleLine="true" 
+            android:layout_centerVertical="true"
+            >
+    
+            <com.android.systemui.statusbar.policy.Clock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Clock"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                />
+    
+            <com.android.systemui.statusbar.policy.CenterClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Clock"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                />
+    
         </LinearLayout>
 
         <com.android.systemui.statusbar.policy.DateView 
@@ -71,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
+            android:layout_marginLeft="8dp"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
             android:layout_toRightOf="@id/clock"
