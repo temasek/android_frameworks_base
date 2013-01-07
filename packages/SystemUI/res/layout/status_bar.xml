@@ -42,118 +42,124 @@
         android:visibility="gone"
         />
 
-    <LinearLayout android:id="@+id/status_bar_contents"
+    <LinearLayout 
+        android:id="@+id/status_bar_contents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="6dip"
         android:paddingRight="6dip"
         android:orientation="horizontal"
         >
-
-        <LinearLayout
-            android:id="@+id/notification_icon_area"
-            android:layout_width="0dip"
+        <RelativeLayout 
+            android:layout_width="match_parent" 
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
             >
-            <com.android.systemui.statusbar.StatusBarIconView android:id="@+id/moreIcon"
-                android:layout_width="@dimen/status_bar_icon_size"
-                android:layout_height="match_parent"
-                android:src="@drawable/stat_notify_more"
-                android:visibility="gone"
-                />
-
-            <com.android.systemui.statusbar.phone.IconMerger android:id="@+id/notificationIcons"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"/>  
-        </LinearLayout>
-
-        <LinearLayout android:id="@+id/system_icon_area"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-           <LinearLayout android:id="@+id/statusIcons"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"/>    
-    
             <LinearLayout
-                android:id="@+id/signal_battery_cluster"
+                android:id="@+id/notification_icon_area"
+                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingLeft="2dp"
                 android:orientation="horizontal"
-                android:gravity="center"
                 >
-                <include layout="@layout/signal_cluster_view" 
-                    android:id="@+id/signal_cluster"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.android.systemui.statusbar.StatusBarIconView android:id="@+id/moreIcon"
+                    android:layout_width="@dimen/status_bar_icon_size"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stat_notify_more"
+                    android:visibility="gone"
                     />
-                <include layout="@layout/signal_cluster_text_view"
-                    android:id="@+id/signal_cluster_text"
+    
+                <com.android.systemui.statusbar.phone.IconMerger android:id="@+id/notificationIcons"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"/>  
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/center_clock_layout"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:id="@+id/battery_text"
-                    android:textAppearance="@style/TextAppearance.StatusBar.Battery"
+                    android:layout_height="match_parent">
+                    <com.android.systemui.statusbar.policy.CenterClock
+                         android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+                         android:gravity="center"
+                         android:id="@+id/center_clock"
+                         android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:singleLine="true" />
+            </LinearLayout>
+            <LinearLayout 
+                android:id="@+id/system_icon_area"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+    
+                <LinearLayout 
+                    android:id="@+id/statusIcons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"/>    
+        
+                <LinearLayout
+                    android:id="@+id/signal_battery_cluster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="2dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <include layout="@layout/signal_cluster_view" 
+                        android:id="@+id/signal_cluster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <include layout="@layout/signal_cluster_text_view"
+                        android:id="@+id/signal_cluster_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/battery_text"
+                        android:textAppearance="@style/TextAppearance.StatusBar.Battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:singleLine="true"
+                        android:paddingLeft="4dip"
+                        android:layout_marginRight="-3dip"
+                        android:gravity="center_vertical|left"
+                        />
+                    <ImageView
+                        android:id="@+id/battery"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:paddingLeft="4dip"
+                        />
+                    <com.android.systemui.statusbar.policy.CircleBattery
+                        android:id="@+id/circle_battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.StatusBar.Battery"
+                        android:singleLine="true"
+                        android:gravity="bottom"
+                        android:paddingLeft="4dip"
+                        />
+                </LinearLayout>
+    
+                <com.android.systemui.statusbar.policy.Clock
+                    android:id="@+id/clock"
+                    android:textAppearance="@style/TextAppearance.StatusBar.Clock"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:singleLine="true"
-                    android:paddingLeft="4dip"
-                    android:layout_marginRight="-3dip"
+                    android:paddingLeft="6dip"
                     android:gravity="center_vertical|left"
-                    />
-                <ImageView
-                    android:id="@+id/battery"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:paddingLeft="4dip"
-                    />
-                <com.android.systemui.statusbar.policy.CircleBattery
-                    android:id="@+id/circle_battery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.StatusBar.Battery"
-                    android:singleLine="true"
-                    android:gravity="bottom"
-                    android:paddingLeft="4dip"
+                    android:clickable="false"
                     />
             </LinearLayout>
-
-            <com.android.systemui.statusbar.policy.Clock
-                android:id="@+id/clock"
-                android:textAppearance="@style/TextAppearance.StatusBar.Clock"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:singleLine="true"
-                android:paddingLeft="6dip"
-                android:gravity="center_vertical|left"
-                android:clickable="false"
-                />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/center_clock_layout"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <com.android.systemui.statusbar.policy.CenterClock
-                 android:textAppearance="@style/TextAppearance.StatusBar.Clock"
-                 android:gravity="center"
-                 android:id="@+id/center_clock"
-                 android:layout_width="wrap_content"
-                 android:layout_height="fill_parent"
-                 android:singleLine="true" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout android:id="@+id/ticker"
