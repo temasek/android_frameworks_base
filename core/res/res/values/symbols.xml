@@ -1851,4 +1851,8 @@
 
   <!-- LED flashlight -->
   <java-symbol type="bool" name="config_enableTorch" />
+
+  <!-- Screenshort Trash -->
+  <java-symbol type="string" name="trash" />
+
 </resources>
