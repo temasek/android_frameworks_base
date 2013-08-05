@@ -3559,6 +3559,27 @@ public final class Settings {
          */
         public static final String MENU_VISIBILITY = "menu_visibility";
 
+        /**
+         * Enable Menu key
+         *
+         * @hide
+         */
+        public static final String KEY_MENU_ENABLED = "key_menu_enabled";
+
+        /**
+         * Enable Back key
+         *
+         * @hide
+         */
+        public static final String KEY_BACK_ENABLED = "key_back_enabled";
+
+        /**
+         * Enable Home key
+         *
+         * @hide
+         */
+        public static final String KEY_HOME_ENABLED = "key_home_enabled";
+
 	/**
          * Electronic beam animation mode
          * 0 = off,
@@ -3925,6 +3946,7 @@ public final class Settings {
         @Deprecated
         public static final String WIFI_WATCHDOG_PING_TIMEOUT_MS =
             Secure.WIFI_WATCHDOG_PING_TIMEOUT_MS;
+
     }
 
     /**
