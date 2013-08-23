@@ -3060,6 +3060,12 @@ public final class Settings {
         public static final String STATUS_BAR_NETWORK_HIDE = "status_bar_network_hide";  
 
         /**
+         * Configurable LTE or 4G icon - up to per user defined
+         * @hide
+         */
+        public static final String SHOW_LTE_OR_FOURGEE = "show_lte_or_fourgee";
+
+        /**
          * Display style of AM/PM next to clock in status bar
          * 0: Normal display (Eclair stock)
          * 1: Small display (Froyo stock)
