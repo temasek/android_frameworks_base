@@ -97,6 +97,8 @@ public class ActiveDisplayView extends FrameLayout {
 
     private static final int MAX_OVERFLOW_ICONS = 8;
 
+    private static final int POCKET_THRESHOLD = 5000;
+
     // Targets
     private static final int UNLOCK_TARGET = 0;
     private static final int OPEN_APP_TARGET = 4;
@@ -134,6 +136,7 @@ public class ActiveDisplayView extends FrameLayout {
     private int mIconSize;
     private int mIconMargin;
     private int mIconPadding;
+    private long mPocketTime;
     private LinearLayout.LayoutParams mOverflowLayoutParams;
     private KeyguardManager mKeyguardManager;
     private KeyguardLock mKeyguardLock;
@@ -1028,10 +1031,15 @@ public class ActiveDisplayView extends FrameLayout {
                 if (value >= mProximitySensor.getMaximumRange()) {
                     mProximityIsFar = true;
                     if (!isScreenOn() && mPocketModeEnabled && !isOnCall()) {
-                        mNotification = getNextAvailableNotification();
-                        if (mNotification != null) showNotification(mNotification, true);
+                        if (System.currentTimeMillis() >= (mPocketTime + POCKET_THRESHOLD)) {
+                            mWakedByPocketMode = true;
+
+                            mNotification = getNextAvailableNotification();
+                            if (mNotification != null) showNotification(mNotification, true);
+                        }
                     }
                 } else {
+                    if (mProximityIsFar) mPocketTime = System.currentTimeMillis();
                     mProximityIsFar = false;
                 }
             } else if (event.sensor.equals(mLightSensor)) {
