@@ -92,4 +92,7 @@
     <string name="toast_items_saved">Item do Appbar foi salvo</string>
     <string name="content_setup_instructions">Adicione itens ao appbar pressionando por um tempo qualquer item à direita e arraste-o para o appbar. Itens \ n \ nCombine itens em pastas arrastando-os para dentro de pastas na appbar. \ N \ nPara remover um item basta arrastá-lo fora da \ @ appbar</string>
     <string name="content_setup_dismiss">Continue</string>
+
+    <string name="quick_settings_network_adb_disabled_label">Desativado</string>
+    <string name="quick_settings_network_adb_enabled_label">Ativado</string>
 </resources>
