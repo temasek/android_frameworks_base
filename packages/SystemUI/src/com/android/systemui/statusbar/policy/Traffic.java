@@ -111,14 +111,14 @@ public class Traffic extends TextView {
 	mTrafficHandler = new Handler() {
 	@Override
 	public void handleMessage(Message msg) {
-		speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / (SystemClock.elapsedRealtime() - lastUpdateTime);
+		speed = (long) ((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / (SystemClock.elapsedRealtime() - lastUpdateTime));
 		totalRxBytes = mTrafficStats.getTotalRxBytes();
 		lastUpdateTime = SystemClock.elapsedRealtime();
 		
-		if (speed / 1048576 >= 1) {
-			setText(DecimalFormatfnum.format(speed / 1048576) + "MB/s");
+		if (speed / 1048576 >= 1) { // 1024 * 1024
+			setText(DecimalFormatfnum.format(speed / 1048576f) + "MB/s");
 		} else if (speed / 1024 >= 1) {
-			setText(DecimalFormatfnum.format(speed / 1024) + "KB/s");
+			setText(DecimalFormatfnum.format(speed / 1024f) + "KB/s");
 		} else {
 			setText(speed + "B/s");
 		}
