@@ -16,17 +16,20 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+import android.os.SystemClock;
 
 public class Traffic extends TextView {
      private boolean mAttached;
-     TrafficStats mTrafficStats;
+     //TrafficStats mTrafficStats;
      boolean enable_TrafficMeter;
      boolean TrafficMeter_hide; 
      Handler mHandler;
      Handler mTrafficHandler;
      float speed;
-     float totalRxBytes;
-
+     long totalRxBytes;
+     long lastUpdateTime;
+     DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.0");
+    
      //View mStatusBarTraffic;
      protected int mStatusBarTrafficColor = com.android.internal.R.color.holo_blue_light;
 
@@ -108,15 +111,16 @@ public class Traffic extends TextView {
 	mTrafficHandler = new Handler() {
 	@Override
 	public void handleMessage(Message msg) {
-		speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 / 3;
-		totalRxBytes = mTrafficStats.getTotalRxBytes();
-		DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.0");
-		if (speed / 1024 >= 1) {
-			setText(DecimalFormatfnum.format(speed / 1024) + "MB/s");
-		} else if (speed <= 0.0099) {
-				setText(DecimalFormatfnum.format(speed * 1024) + "B/s");
+		speed = (TrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / (SystemClock.elapsedRealtime() - lastUpdateTime);
+		totalRxBytes = TrafficStats.getTotalRxBytes();
+		lastUpdateTime = SystemClock.elapsedRealtime();
+		
+		if (speed / 1048576 >= 1) { // 1024 * 1024
+			setText(DecimalFormatfnum.format(speed / 1048576f) + "MB/s");
+		} else if (speed / 1024 >= 1) {
+			setText(DecimalFormatfnum.format(speed / 1024f) + "KB/s");
 		} else {
-			setText(DecimalFormatfnum.format(speed) + "KB/s");
+			setText(speed + "B/s");
 		}
 		// Hide if there is no traffic
                 if ((enable_TrafficMeter) && (TrafficMeter_hide) && (speed == 0)) {
@@ -130,7 +134,8 @@ public class Traffic extends TextView {
 		super.handleMessage(msg);
 	    }
 	};
-	totalRxBytes = mTrafficStats.getTotalRxBytes();
+	totalRxBytes = TrafficStats.getTotalRxBytes();
+	lastUpdateTime = SystemClock.elapsedRealtime();
 	mTrafficHandler.sendEmptyMessage(0);
     }
 
@@ -149,10 +154,10 @@ public class Traffic extends TextView {
 
     public void update() {
 	mTrafficHandler.removeCallbacks(mRunnable);
-	mTrafficHandler.postDelayed(mRunnable, 500);
+	mTrafficHandler.postDelayed(mRunnable, 1000);
     }
 
-        Runnable mRunnable = new Runnable() {
+    Runnable mRunnable = new Runnable() {
 	@Override
 	public void run() {
 		mTrafficHandler.sendEmptyMessage(0);
