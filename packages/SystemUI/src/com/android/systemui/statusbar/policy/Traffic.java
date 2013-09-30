@@ -25,10 +25,10 @@ public class Traffic extends TextView {
      boolean TrafficMeter_hide; 
      Handler mHandler;
      Handler mTrafficHandler;
-     float speed;
+     long speed;
      long totalRxBytes;
      long lastUpdateTime;
-     DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.0");
+     DecimalFormat decimalFormat = new DecimalFormat("##0.0");
     
      //View mStatusBarTraffic;
      protected int mStatusBarTrafficColor = com.android.internal.R.color.holo_blue_light;
@@ -115,10 +115,10 @@ public class Traffic extends TextView {
 		totalRxBytes = TrafficStats.getTotalRxBytes();
 		lastUpdateTime = SystemClock.elapsedRealtime();
 		
-		if (speed / 1048576 >= 1) { // 1024 * 1024
-			setText(DecimalFormatfnum.format(speed / 1048576f) + "MB/s");
-		} else if (speed / 1024 >= 1) {
-			setText(DecimalFormatfnum.format(speed / 1024f) + "KB/s");
+		if (((float) speed) / 1048576 >= 1) { // 1024 * 1024
+			setText(decimalFormat.format(speed / 1048576f) + "MB/s");
+		} else if (((float) speed) / 1024f >= 1) {
+			setText(decimalFormat.format(speed / 1024f) + "KB/s");
 		} else {
 			setText(speed + "B/s");
 		}
