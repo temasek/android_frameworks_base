@@ -149,7 +149,7 @@ public class Traffic extends TextView {
 
     public void update() {
 	mTrafficHandler.removeCallbacks(mRunnable);
-	mTrafficHandler.postDelayed(mRunnable, 2000);
+	mTrafficHandler.postDelayed(mRunnable, 500);
     }
 
         Runnable mRunnable = new Runnable() {
