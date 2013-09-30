@@ -16,6 +16,7 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+import android.os.SystemClock;
 
 public class Traffic extends TextView {
      private boolean mAttached;
@@ -25,8 +26,10 @@ public class Traffic extends TextView {
      Handler mHandler;
      Handler mTrafficHandler;
      float speed;
-     float totalRxBytes;
-
+     long totalRxBytes;
+     long lastUpdateTime;
+     DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.0");
+    
      //View mStatusBarTraffic;
      protected int mStatusBarTrafficColor = com.android.internal.R.color.holo_blue_light;
 
@@ -108,15 +111,16 @@ public class Traffic extends TextView {
 	mTrafficHandler = new Handler() {
 	@Override
 	public void handleMessage(Message msg) {
-		speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 / 3;
+		speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / (SystemClock.elapsedRealtime() - lastUpdateTime);
 		totalRxBytes = mTrafficStats.getTotalRxBytes();
-		DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.0");
-		if (speed / 1024 >= 1) {
-			setText(DecimalFormatfnum.format(speed / 1024) + "MB/s");
-		} else if (speed <= 0.0099) {
-				setText(DecimalFormatfnum.format(speed * 1024) + "B/s");
+		lastUpdateTime = SystemClock.elapsedRealtime();
+		
+		if (speed / 1048576 >= 1) {
+			setText(DecimalFormatfnum.format(speed / 1048576) + "MB/s");
+		} else if (speed / 1024 >= 1) {
+			setText(DecimalFormatfnum.format(speed / 1024) + "KB/s");
 		} else {
-			setText(DecimalFormatfnum.format(speed) + "KB/s");
+			setText(speed + "B/s");
 		}
 		// Hide if there is no traffic
                 if ((enable_TrafficMeter) && (TrafficMeter_hide) && (speed == 0)) {
@@ -131,6 +135,7 @@ public class Traffic extends TextView {
 	    }
 	};
 	totalRxBytes = mTrafficStats.getTotalRxBytes();
+	lastUpdateTime = SystemClock.elapsedRealtime();
 	mTrafficHandler.sendEmptyMessage(0);
     }
 
@@ -149,10 +154,10 @@ public class Traffic extends TextView {
 
     public void update() {
 	mTrafficHandler.removeCallbacks(mRunnable);
-	mTrafficHandler.postDelayed(mRunnable, 500);
+	mTrafficHandler.postDelayed(mRunnable, 1000);
     }
 
-        Runnable mRunnable = new Runnable() {
+    Runnable mRunnable = new Runnable() {
 	@Override
 	public void run() {
 		mTrafficHandler.sendEmptyMessage(0);
