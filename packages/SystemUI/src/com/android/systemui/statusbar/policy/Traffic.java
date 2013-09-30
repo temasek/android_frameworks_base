@@ -69,7 +69,7 @@ public class Traffic extends TextView {
 	super(context, attrs, defStyle);
 	mHandler = new Handler();
 	SettingsObserver settingsObserver = new SettingsObserver(mHandler);
-	mTrafficStats = new TrafficStats();
+	//mTrafficStats = new TrafficStats();
 	settingsObserver.observe();
 	updateSettings();
     }
