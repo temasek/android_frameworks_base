@@ -3924,7 +3924,13 @@ public final class Settings {
 	/**
          * Force dual panel for settings
          */
-        public static final String FORCE_DUAL_PANEL = "force_dualpanel"; 
+        public static final String FORCE_DUAL_PANEL = "force_dualpanel";
+
+        /**
+         * Whether to use keyguard or homescreen widgets
+         * @hide
+         */
+        public static final String LOCKSCREEN_ALL_WIDGETS = "lockscreen_all_widgets";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
