@@ -20,7 +20,7 @@ import android.os.SystemClock;
 
 public class Traffic extends TextView {
      private boolean mAttached;
-     TrafficStats mTrafficStats;
+     //TrafficStats mTrafficStats;
      boolean enable_TrafficMeter;
      boolean TrafficMeter_hide; 
      Handler mHandler;
@@ -111,8 +111,8 @@ public class Traffic extends TextView {
 	mTrafficHandler = new Handler() {
 	@Override
 	public void handleMessage(Message msg) {
-		speed = (long) ((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / (SystemClock.elapsedRealtime() - lastUpdateTime));
-		totalRxBytes = mTrafficStats.getTotalRxBytes();
+		speed = (TrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / (SystemClock.elapsedRealtime() - lastUpdateTime);
+		totalRxBytes = TrafficStats.getTotalRxBytes();
 		lastUpdateTime = SystemClock.elapsedRealtime();
 		
 		if (speed / 1048576 >= 1) { // 1024 * 1024
@@ -134,7 +134,7 @@ public class Traffic extends TextView {
 		super.handleMessage(msg);
 	    }
 	};
-	totalRxBytes = mTrafficStats.getTotalRxBytes();
+	totalRxBytes = TrafficStats.getTotalRxBytes();
 	lastUpdateTime = SystemClock.elapsedRealtime();
 	mTrafficHandler.sendEmptyMessage(0);
     }
