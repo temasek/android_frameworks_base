@@ -1,0 +1,6 @@
+/.repo/repo/
+/packages/SystemUI/.idea
+/packages/SystemUI/SystemUI.iml
+/packages/SystemUI/gen
+/packages/SystemUI/tests/gen
+/packages/SystemUI/tests/tests.iml
