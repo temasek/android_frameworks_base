@@ -111,14 +111,21 @@ public class Traffic extends TextView {
 	mTrafficHandler = new Handler() {
 	@Override
 	public void handleMessage(Message msg) {
-		speed = (TrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / (SystemClock.elapsedRealtime() - lastUpdateTime);
+		long td = SystemClock.elapsedRealtime() - lastUpdateTime;
+
+		if (td == 0) {
+			// we just updated the view, nothing further to do
+			return;
+		}
+
+		speed = (TrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / td;
 		totalRxBytes = TrafficStats.getTotalRxBytes();
 		lastUpdateTime = SystemClock.elapsedRealtime();
-		
+
 		if (((float) speed) / 1048576 >= 1) { // 1024 * 1024
-			setText(decimalFormat.format(speed / 1048576f) + "MB/s");
+			setText(decimalFormat.format(((float) speed) / 1048576f) + "MB/s");
 		} else if (((float) speed) / 1024f >= 1) {
-			setText(decimalFormat.format(speed / 1024f) + "KB/s");
+			setText(decimalFormat.format(((float) speed) / 1024f) + "KB/s");
 		} else {
 			setText(speed + "B/s");
 		}
@@ -166,7 +173,7 @@ public class Traffic extends TextView {
 
     private void updateSettings() {
 	ContentResolver resolver = mContext.getContentResolver();
-		
+
 	enable_TrafficMeter = (Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_TRAFFIC_ENABLE, 0) == 1);
         TrafficMeter_hide = (Settings.System.getInt(resolver,
