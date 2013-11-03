@@ -88,6 +88,8 @@ import android.os.IBinder;
 import android.os.Messenger;
 import android.os.RemoteException;
 
+import com.android.internal.util.temasek.PolicyConstants;
+import com.android.internal.util.temasek.PolicyHelper;
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that
@@ -270,112 +272,9 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         final ContentResolver cr = mContext.getContentResolver();
         mItems = new ArrayList<Action>();
 
-        // first: power off
-        mItems.add(
-            new SinglePressAction(
-                    com.android.internal.R.drawable.ic_lock_power_off,
-                    R.string.global_action_power_off) {
-
-                public void onPress() {
-                    // shutdown by making sure radio and power are handled accordingly.
-                    mWindowManagerFuncs.shutdown(true);
-                }
-
-                public boolean showDuringKeyguard() {
-                    return true;
-                }
-
-                public boolean showBeforeProvisioning() {
-                    return true;
-                }
-            });
-
-        // next: reboot
-        // only shown if enabled, enabled by default
-        boolean showReboot = Settings.System.getIntForUser(cr,
-                Settings.System.POWER_MENU_REBOOT_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
-        if (showReboot) {
-            mItems.add(
-                new SinglePressAction(R.drawable.ic_lock_reboot, R.string.global_action_reboot) {
-                    public void onPress() {
-                        mWindowManagerFuncs.reboot();
-                    }
-
-                    public boolean onLongPress() {
-                        mWindowManagerFuncs.rebootSafeMode(true);
-                        return true;
-                    }
-
-                    public boolean showDuringKeyguard() {
-                        return true;
-                    }
-
-                    public boolean showBeforeProvisioning() {
-                        return true;
-                    }
-                });
-        }
-
-        // next: profile
-        // only shown if both system profiles and the menu item is enabled, enabled by default
-        boolean showProfiles =
-                Settings.System.getIntForUser(cr,
-                        Settings.System.SYSTEM_PROFILES_ENABLED, 1, UserHandle.USER_CURRENT) == 1
-                && Settings.System.getIntForUser(cr,
-                        Settings.System.POWER_MENU_PROFILES_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
-        if (showProfiles) {
-            mItems.add(
-                new ProfileChooseAction() {
-                    public void onPress() {
-                        createProfileDialog();
-                    }
-
-                    public boolean onLongPress() {
-                        return true;
-                    }
-
-                    public boolean showDuringKeyguard() {
-                        return false;
-                    }
-
-                    public boolean showBeforeProvisioning() {
-                        return false;
-                    }
-                });
-        }
-
-        // next: screenshot
-        // only shown if enabled, disabled by default
-        boolean showScreenshot = Settings.System.getIntForUser(cr,
-                Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
-        if (showScreenshot) {
-            mItems.add(
-                new SinglePressAction(R.drawable.ic_lock_screenshot, R.string.global_action_screenshot) {
-                    public void onPress() {
-                        takeScreenshot();
-                    }
-
-                    public boolean showDuringKeyguard() {
-                        return true;
-                    }
-
-                    public boolean showBeforeProvisioning() {
-                        return true;
-                    }
-                });
-        }
-
-        // next: airplane mode
-        boolean showAirplaneMode = Settings.System.getIntForUser(cr,
-                Settings.System.POWER_MENU_AIRPLANE_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
-        if (showAirplaneMode) {
-            mItems.add(mAirplaneModeOn);
-        }
-
-        // next: bug report, if enabled
-        boolean showBugReport = (Settings.Global.getInt(cr,
-                Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0 && isCurrentUserOwner());
-        if (showBugReport) {
+        // bug report, if enabled
+        if (Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0 && isCurrentUserOwner()) {
             mItems.add(
                 new SinglePressAction(com.android.internal.R.drawable.stat_sys_adb,
                         R.string.global_action_bug_report) {
@@ -422,11 +321,72 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 });
         }
 
-        // next: optionally add a list of users to switch to
-        boolean showUsers = Settings.System.getIntForUser(cr,
-                Settings.System.POWER_MENU_USER_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
-        if (showUsers) {
-            addUsersToMenu(mItems);
+        String[] powerMenuConfig = PolicyHelper.getPowerMenuConfig(mContext);
+        for (String config:powerMenuConfig) {
+            // power off
+            if (config.equals(PolicyConstants.ACTION_POWER_OFF)) {
+                mItems.add(
+                    new SinglePressAction(R.drawable.ic_lock_power_off,
+                            R.string.global_action_power_off) {
+
+                        public void onPress() {
+                            // shutdown by making sure radio and power are handled accordingly.
+                            mWindowManagerFuncs.shutdown(true);
+                        }
+
+                        public boolean showDuringKeyguard() {
+                            return true;
+                        }
+
+                        public boolean showBeforeProvisioning() {
+                            return true;
+                        }
+                    });
+            // reboot
+            } else if (config.equals(PolicyConstants.ACTION_REBOOT)) {
+                mItems.add(
+                    new SinglePressAction(R.drawable.ic_lock_reboot,
+                            R.string.global_action_reboot) {
+                        public void onPress() {
+                            mWindowManagerFuncs.reboot();
+                        }
+
+                        public boolean onLongPress() {
+                            mWindowManagerFuncs.rebootSafeMode(true);
+                            return true;
+                        }
+
+                        public boolean showDuringKeyguard() {
+                            return true;
+                        }
+
+                        public boolean showBeforeProvisioning() {
+                            return true;
+                        }
+                    });
+            // screenshot
+            } else if (config.equals(PolicyConstants.ACTION_SCREENSHOT)) {
+                mItems.add(
+                    new SinglePressAction(R.drawable.ic_lock_screenshot,
+                            R.string.global_action_screenshot) {
+                        public void onPress() {
+                            takeScreenshot();
+                        }
+
+                        public boolean showDuringKeyguard() {
+                            return true;
+                        }
+                        public boolean showBeforeProvisioning() {
+                            return true;
+                        }
+                    });
+            // airplane mode
+            } else if (config.equals(PolicyConstants.ACTION_AIRPLANE)) {
+                mItems.add(mAirplaneModeOn);
+            // silent mode
+            } else if ((config.equals(PolicyConstants.ACTION_SOUND)) && (mShowSilentToggle)) {
+                mItems.add(mSilentModeAction);
+            }
         }
 
         // last: silent mode
@@ -604,7 +564,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                             msg.arg1 = 1;
                         if (mNavigationBar != null && mNavigationBar.isVisibleLw())
                             msg.arg2 = 1;
-                         */
+                        */
 
                         /* wait for the dialog box to close */
                         try {
@@ -622,8 +582,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 @Override
                 public void onServiceDisconnected(ComponentName name) {}
             };
-
-            if (mContext.bindServiceAsUser(intent, conn, Context.BIND_AUTO_CREATE, UserHandle.CURRENT)) {
+            if (mContext.bindService(intent, conn, Context.BIND_AUTO_CREATE)) {
                 mScreenshotConnection = conn;
                 mHandler.postDelayed(mScreenshotTimeout, 10000);
             }
