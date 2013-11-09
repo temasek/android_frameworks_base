@@ -57,4 +57,5 @@ interface IStatusBarService
     void toggleScreenshot();
     void toggleLastApp();
     void toggleKillApp();
+    void setAutoRotate(boolean enabled);
 }
