@@ -36,4 +36,9 @@
     <dimen name="recent_app_icon_size">48dp</dimen>
     <dimen name="recent_thumbnail_width">198dp</dimen>
     <dimen name="recent_thumbnail_height">140dp</dimen>
+
+    <!-- Notification Shortcuts -->
+    <dimen name="notification_shortcuts_close_handle_height">28dp</dimen>
+    <dimen name="notification_shortcuts_spacing_height">88dp</dimen>
+    <dimen name="notification_shortcuts_drawer_margin">56dp</dimen>
 </resources>
