@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- QS Battery Tile -->
+    <string name="quick_settings_battery_charging">Charging</string>
+    <string name="quick_settings_battery_discharging">Discharging</string>
+
+</resources>
