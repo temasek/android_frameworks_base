@@ -2701,6 +2701,31 @@ public final class Settings {
                 "lockscreen_shortcuts_longpress";
 
         /**
+         * Whether to show the camera widget on lockscreen
+         * @hide
+         */
+        public static final String LOCKSCREEN_CAMERA_WIDGET = "lockscreen_camera_widget";
+
+        /**
+         * Whether to hide the lockscreen gadgets glowing hints
+         * @hide
+         */
+        public static final String LOCKSCREEN_DISABLE_HINTS = "lockscreen_disable_hints";
+
+        /**
+         * Whether to minimize lockscreen challenge on screen turned on
+         * @hide
+         */
+        public static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
+
+        /**
+         * Whether to use the carousel as widget container on portrait view
+         * @hide
+         */
+        public static final String LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL =
+                "lockscreen_use_widget_container_carousel";
+
+        /**
          * @deprecated Use {@link android.provider.Settings.Global#LOW_BATTERY_SOUND}
          * instead
          * @hide
@@ -3473,12 +3498,6 @@ public final class Settings {
           * @hide
           */
          public static final String KEY_APP_SWITCH_ACTION = "key_app_switch_action";
-
-        /**
-         * Weather to minimize lockscreen challenge on screen turned on
-         * @hide
-         */
-        public static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
 
          /**
           * Action to perform when the app switch key is long-pressed. (Default is 0)
