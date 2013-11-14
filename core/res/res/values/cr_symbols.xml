@@ -3,6 +3,9 @@
 <resources>
 
   <java-symbol type="string" name="action_null"/>
+
+  <!-- Screenshort Trash -->
+  <java-symbol type="string" name="trash" />
   
   <!--  Animations -->
   <java-symbol type="string" name="animation_fade"/>

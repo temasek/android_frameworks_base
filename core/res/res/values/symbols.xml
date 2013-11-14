@@ -1852,9 +1852,6 @@
   <!-- LED flashlight -->
   <java-symbol type="bool" name="config_enableTorch" />
 
-  <!-- Screenshort Trash -->
-  <java-symbol type="string" name="trash" />
-
   <!-- Navigation Ring -->
   <java-symbol type="drawable" name="ic_navigation_ring_blank_normal" />
   <java-symbol type="drawable" name="ic_navigation_ring_blank_activated" />
