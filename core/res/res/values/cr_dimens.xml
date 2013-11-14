@@ -10,4 +10,14 @@
     <!-- Top margin for overflow notifications shown in the P.O.R.N. view -->
     <dimen name="glowpad_overflow_notifications_margin_top">48dp</dimen>
 
+    <!-- EdgeGesture service: Distance a swipe must travel to be recognized as swipe. -->
+    <dimen name="edge_gesture_trigger_distance">12dp</dimen>
+
+    <!-- EdgeGesture service: This is the distance a swipe can travel orthogonally to its actual swipe
+         direction to be still recognized as swipe. -->
+    <dimen name="edge_gesture_perpendicular_distance">22dp</dimen>
+
+    <!-- EdgeGesture service: Thickness of the active trigger fields around the screen border -->
+    <dimen name="edge_gesture_trigger_thickness">15dp</dimen>
+
 </resources>
