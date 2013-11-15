@@ -55,6 +55,8 @@
   <java-symbol type="id" name="icon1" />
   <java-symbol type="id" name="icon2" />
   <java-symbol type="id" name="icon3" />
+  <java-symbol type="string" name="global_action_screen_record" />
+  <java-symbol type="drawable" name="ic_lock_screen_record" />
 
   <!-- Expanded desktop -->
   <java-symbol type="string" name="global_actions_expanded_desktop_mode_on_status" />
