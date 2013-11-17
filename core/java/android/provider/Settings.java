@@ -3829,6 +3829,18 @@ public final class Settings {
         public static final String EXPANDED_DESKTOP_STATE = "expanded_desktop_state";
 
         /**
+         * show clear all recents button
+         *  @hide
+         */
+        public static final String SHOW_CLEAR_RECENTS_BUTTON = "clear_recents_button";
+
+        /**
+         * location of the clear all rectents button
+         * @hide
+         */
+        public static final String CLEAR_RECENTS_BUTTON_LOCATION = "clear_recents_button_location";
+
+        /**
          * HALO, should default to 0 (no, do not show)
          * @hide
          */
@@ -3836,6 +3848,7 @@ public final class Settings {
 
         /**
          * HALO reversed?, should default to 1 (yes, reverse)
+
          * @hide
          */
         public static final String HALO_REVERSED = "halo_reversed";
