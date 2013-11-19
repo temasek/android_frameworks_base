@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Power menu colors -->
+    <color name="power_menu_icon_default_color">#ffffffff</color>
+    <color name="power_menu_text_default_color">#ffffffff</color>
+
+</resources>
