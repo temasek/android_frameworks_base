@@ -71,6 +71,9 @@
 
     <!-- Keyguard -->
     <uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
+ 
+    <!--Halo This permission already in system
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>-->
 
     <!-- Kill app permission -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
