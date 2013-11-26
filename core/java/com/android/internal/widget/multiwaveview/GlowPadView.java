@@ -62,40 +62,6 @@ public class GlowPadView extends View {
     private static final int STATE_SNAP = 4;
     private static final int STATE_FINISH = 5;
 
-    //Lockscreen targets
-    /**
-     * @hide
-     */
-    public final static String ICON_RESOURCE = "icon_resource";
-
-    /**
-     * @hide
-     */
-    public final static String ICON_PACKAGE = "icon_package";
-
-    /**
-     * @hide
-     */
-    public final static String ICON_FILE = "icon_file";
-
-    /**
-     * Number of customizable lockscreen targets for tablets
-     * @hide
-     */
-    public final static int MAX_TABLET_TARGETS = 7;
-
-    /**
-     * Number of customizable lockscreen targets for phones
-     * @hide
-     */
-    public final static int MAX_PHONE_TARGETS = 4;
-
-    /**
-     * Empty target used to reference unused lockscreen targets
-     * @hide
-     */
-    public final static String EMPTY_TARGET = "empty";
-
     // Animation properties.
     private static final float SNAP_MARGIN_DEFAULT = 20.0f; // distance to ring before we snap to it
 
@@ -282,6 +248,9 @@ public class GlowPadView extends View {
         // Read array of target drawables
         if (a.getValue(R.styleable.GlowPadView_targetDrawables, outValue)) {
             internalSetTargetResources(outValue.resourceId);
+        }
+        if (mTargetDrawables == null || mTargetDrawables.size() == 0) {
+            throw new IllegalStateException("Must specify at least one target drawable");
         }
 
         // Read array of target descriptions
@@ -625,10 +594,6 @@ public class GlowPadView extends View {
 
     private void internalSetTargetResources(int resourceId) {
         final ArrayList<TargetDrawable> targets = loadDrawableArray(resourceId);
-        if (targets.size() == 0) {
-            throw new IllegalStateException("Must specify at least one target drawable");
-        }
-
         mTargetDrawables = targets;
         mTargetResourceId = resourceId;
 
@@ -650,30 +615,12 @@ public class GlowPadView extends View {
         }
     }
 
-    private void internalSetTargetResources(ArrayList<TargetDrawable> targets) {
-        if (targets == null || targets.size() == 0) {
-            throw new IllegalStateException("Must specify at least one target drawable");
-        }
+    private void internalSetTargetResources(ArrayList<TargetDrawable> drawList) {
         mTargetResourceId = 0;
-        mTargetDrawables = targets;
-
-        int maxWidth = mHandleDrawable.getWidth();
-        int maxHeight = mHandleDrawable.getHeight();
-        final int count = targets.size();
-        for (int i = 0; i < count; i++) {
-            TargetDrawable target = targets.get(i);
-            maxWidth = Math.max(maxWidth, target.getWidth());
-            maxHeight = Math.max(maxHeight, target.getHeight());
-        }
-        if (mMaxTargetWidth != maxWidth || mMaxTargetHeight != maxHeight) {
-            mMaxTargetWidth = maxWidth;
-            mMaxTargetHeight = maxHeight;
-            requestLayout(); // required to resize layout and call updateTargetPositions()
-        } else {
-            updateTargetPositions(mWaveCenterX, mWaveCenterY);
-            updatePointCloudPosition(mWaveCenterX, mWaveCenterY);
-            hideTargets(false, false);
-        }
+        mTargetDrawables = drawList;
+        updateTargetPositions(mWaveCenterX, mWaveCenterY);
+        updatePointCloudPosition(mWaveCenterX, mWaveCenterY);
+        hideTargets(false, false);
     }
 
     /**
@@ -1469,6 +1416,7 @@ public class GlowPadView extends View {
         return replaced;
     }
 
+<<<<<<< HEAD
     public void setHandleDrawable(Drawable handle) {
         Resources res = mContext.getResources();
         if (handle != null) {
@@ -1477,5 +1425,10 @@ public class GlowPadView extends View {
             mHandleDrawable = new TargetDrawable(res, 0);
         }
         mHandleDrawable.setState(TargetDrawable.STATE_INACTIVE);
+=======
+    public void setArc(float angle, int color) {
+        mArcAngle = angle;
+        mArcPaint.setColor(color);
+>>>>>>> a01525e... Revert "Framework : Lockscreen - Customizable shortcuts"
     }
 }
