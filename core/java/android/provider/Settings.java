@@ -3686,12 +3686,6 @@ public final class Settings {
         public static final String NOTIFICATION_SHORTCUTS_COLOR_MODE = "notification_shortcuts_color_mode";
 
         /**
-         * Whether or not to show circle battery around the lockscreen ring
-         * @hide
-         */
-        public static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
-
-        /**
          * Config for advanced power menu
          *
          * @hide
