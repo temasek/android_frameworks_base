@@ -1125,7 +1125,9 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             if (!mHasTelephony) return;
             final boolean inAirplaneMode = serviceState.getState() == ServiceState.STATE_POWER_OFF;
             mAirplaneState = inAirplaneMode ? ToggleAction.State.On : ToggleAction.State.Off;
-            mHandler.sendEmptyMessage(MESSAGE_REFRESH_AIRPLANEMODE);
+            if (mAirplaneModeOn != null) {
+                mHandler.sendEmptyMessage(MESSAGE_REFRESH_AIRPLANEMODE);
+            }
         }
     };
 
