@@ -75,6 +75,9 @@
     <!--Halo This permission already in system
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>-->
 
+    <activity android:name="com.android.systemui.Transparent"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
     <!-- Kill app permission -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
 
