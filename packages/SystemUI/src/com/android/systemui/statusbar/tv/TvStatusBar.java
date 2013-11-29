@@ -123,7 +123,7 @@ public class TvStatusBar extends BaseStatusBar {
     }
 
     @Override
-    public void updateNotificationIcons() {
+    protected void updateNotificationIcons() {
     }
 
     @Override

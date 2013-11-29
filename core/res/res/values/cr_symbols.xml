@@ -65,9 +65,5 @@
   <java-symbol type="string" name="accessibility_target_direction" />
   <!-- Description of accessibility unlock target -->
   <java-symbol type="string" name="description_target_unlock" />
-
-  <!-- Halo -->
-  <java-symbol type="style" name="Theme.DeviceDefault.FloatingWindow" />
-  <java-symbol type="style" name="Theme.DeviceDefault.FloatingWindowLight" />
   
 </resources>
