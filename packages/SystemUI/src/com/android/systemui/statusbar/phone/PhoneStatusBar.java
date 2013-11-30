@@ -457,6 +457,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_CAMERA_WIDGET),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_BACKGROUND),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -465,15 +474,23 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
             super.onChange(selfChange, uri);
 
             if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_BACKGROUND))
+                || uri.equals(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE))
+                || uri.equals(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA))) {
+                if (mNotificationPanel != null) {
+                    mNotificationPanel.setBackgroundDrawables();
+                }
+                if (mSettingsPanel != null) {
+                    mSettingsPanel.setBackgroundDrawables();
+                }
+            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_CAMERA_WIDGET))) {
                 if (mNavigationBarView != null) {
                     mNavigationBarView.disableCameraByUser();
                 }
-            }
-
-            update();
-
-            if (uri.equals(Settings.System.getUriFor(
+            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_BUTTON_TINT))
                 || uri.equals(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_BUTTON_TINT_MODE))
@@ -507,6 +524,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
                     mNotificationShortcutsLayout.updateShortcuts();
                 }
             }
+
+            update();
         }
 
         public void update() {
