@@ -89,6 +89,9 @@
     <!-- Active display -->
     <uses-permission android:name="android.permission.SYSTEM_NOTIFICATION_LISTENER" />
 
+    <!-- Reboot -->
+    <uses-permission android:name="android.permission.REBOOT" />
+
     <application
         android:persistent="true"
         android:allowClearUserData="false"
