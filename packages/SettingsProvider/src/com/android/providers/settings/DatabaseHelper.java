@@ -2025,9 +2025,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             loadIntegerSetting(stmt, Settings.System.QS_QUICK_PULLDOWN,
                     R.integer.def_qs_quick_pulldown);
-
-            loadStringSetting(stmt, Settings.System.LOCKSCREEN_TARGETS,
-                    R.string.def_lockscreen_targets);
         } finally {
             if (stmt != null) stmt.close();
         }
