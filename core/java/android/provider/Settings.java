@@ -3918,13 +3918,6 @@ public final class Settings {
         public static final String RECENTS_RAM_BAR_ACTIVE_APPS_COLOR = "recents_ram_bar_active_apps_color";
 
         /**
-         * Choose position of Clear button on Recents window
-         * 0 = disabled, 1 = bottom right, 2 = bottom left, 3 = top right, 4 = top left
-         * @hide
-         */
-        public static final String CLEAR_RECENTS_POSITION = "clear_recents_position"; 
-
-        /**
          * Performance profile
          * @see config_perf_profile_prop in frameworks/base/core/res/res/values/config.xml
          * @hide
