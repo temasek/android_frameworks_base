@@ -28,8 +28,8 @@
     android:layout_marginBottom="-75dp"
     android:foreground="@drawable/bg_protect"
     systemui:recentItemLayout="@layout/status_bar_recent_item"
-    android:fitsSystemWindows="true"
-    >
+    android:layout_alignParentBottom="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
