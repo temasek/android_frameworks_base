@@ -3982,6 +3982,12 @@ public final class Settings {
         public static final String POWER_MENU_CONFIG = "power_menu_config";
 
         /**
+         * Whether to remove the sound from phone ringing during quiet hours.
+         * @hide
+         */
+        public static final String QUIET_HOURS_RINGER = "quiet_hours_ringer";
+
+        /**
          * Action for long-pressing back button on lock screen
          * @hide
          */
@@ -4322,7 +4328,9 @@ public final class Settings {
             QUIET_HOURS_ENABLED,
             QUIET_HOURS_START,
             QUIET_HOURS_END,
+            QUIET_HOURS_RINGER,
             QUIET_HOURS_MUTE,
+            QUIET_HOURS_HAPTIC,
             QUIET_HOURS_SYSTEM,
             QUIET_HOURS_STILL,
             QUIET_HOURS_DIM,
