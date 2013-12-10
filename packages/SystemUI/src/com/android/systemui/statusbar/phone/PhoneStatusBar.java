@@ -72,6 +72,7 @@ import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.EventLog;
 import android.util.Log;
+import android.util.Pair;
 import android.util.Slog;
 import android.util.Pair;
 import android.view.Display;
@@ -266,6 +267,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     private int mNotificationHeaderHeight;
 
     private boolean mShowCarrierInPanel = false;
+
+    private boolean mRecreating = false;
 
     // position
     int[] mPositionTmp = new int[2];
@@ -2066,7 +2069,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
 
         // Expand the window to encompass the full screen in anticipation of the drag.
         // This is only possible to do atomically because the status bar is at the top of the screen!
-        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) mStatusBarContainer.getLayoutParams();
+        WindowManager.LayoutParams lp = (WindowManager.LayoutParams)
+                mStatusBarContainer.getLayoutParams();
         lp.flags &= ~WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         lp.flags |= WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
         lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -2459,7 +2463,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         visibilityChanged(false);
 
         // Shrink the window to the size of the status bar only
-        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) mStatusBarContainer.getLayoutParams();
+        WindowManager.LayoutParams lp = (WindowManager.LayoutParams)
+                mStatusBarContainer.getLayoutParams();
         lp.height = getStatusBarHeight();
         lp.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         lp.flags &= ~WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
@@ -3519,9 +3524,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         }
     }
 
-    private void recreateStatusBar() {
+    private void recreateStatusBar(boolean recreateNavigationBar) {
         mRecreating = true;
         mStatusBarContainer.removeAllViews();
+        mStatusBarView.postInvalidate();
+        updateDisplaySize();
 
         // extract icons from the soon-to-be recreated viewgroup.
         int nIcons = mStatusIcons.getChildCount();
@@ -3541,7 +3548,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         mNotificationData.clear();
 
         makeStatusBarView();
-        repositionNavigationBar();
+
+        if (mNavigationBarView != null && recreateNavigationBar) {
+            // recreate and reposition navigationbar
+            mNavigationBarView.recreateNavigationBar();
+            repositionNavigationBar();
+        }
 
         // recreate StatusBarIconViews.
         for (int i = 0; i < nIcons; i++) {
@@ -3551,9 +3563,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         }
 
         // recreate notifications.
+        Entry shadeEntry = null;
         for (int i = 0; i < nNotifs; i++) {
             Pair<IBinder, StatusBarNotification> notifData = notifications.get(i);
-            addNotificationViews(createNotificationViews(notifData.first, notifData.second));
+            shadeEntry = createNotificationViews(notifData.first, notifData.second);
+        }
+        if (shadeEntry != null) {
+            addNotificationViews(shadeEntry);
         }
 
         setAreThereNotifications();
@@ -3561,6 +3577,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         mStatusBarContainer.addView(mStatusBarWindow);
 
         updateExpandedViewPos(EXPANDED_LEAVE_ALONE);
+        //mNotificationShortcutsLayout.recreateShortcutLayout();
         mRecreating = false;
     }
 
