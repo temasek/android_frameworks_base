@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <!-- Navigation ring power menu -->
+  <java-symbol type="drawable" name="ic_navigation_ring_power_menu" />
+  
+</resources>
