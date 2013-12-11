@@ -19,6 +19,7 @@
     <string name="profileNameHome">Casa</string>
     <string name="profileNameSilent">Silêncio</string>
     <string name="profileNameNight">Noite</string>
+    <string name="profileNameAutomobile">Automóvel</string>
     <string name="profileGroupPhone">Telefone</string>
     <string name="profileGroupCalendar">Agenda</string>
     <string name="profileGroupGmail">Gmail</string>
