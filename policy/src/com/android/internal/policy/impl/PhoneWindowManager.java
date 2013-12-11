@@ -4473,11 +4473,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (lidOpen) {
             if (Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.LOCKSCREEN_LID_WAKE, 0, UserHandle.USER_CURRENT) == 1) {
-                if (keyguardIsShowingTq()) {
+                //if (keyguardIsShowingTq()) {
                     //mKeyguardMediator.onWakeKeyWhenKeyguardShowingTq(KeyEvent.KEYCODE_POWER);
-                } else {
+                //} else {
                     mPowerManager.wakeUp(SystemClock.uptimeMillis());
-                }
+                //}
             }
         } else if (!mLidControlsSleep) {
             mPowerManager.userActivity(SystemClock.uptimeMillis(), false);
