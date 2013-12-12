@@ -181,8 +181,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     PowerManager mPowerManager;
     protected int mRowHeight;
 
-    protected FrameLayout mStatusBarContainer;
-
     // Halo
     protected Halo mHalo = null;
     protected Ticker mTicker;

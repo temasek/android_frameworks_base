@@ -331,7 +331,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     int mInitialTouchX;
     int mInitialTouchY;
 
-    private boolean mRecreating = false;
     private StatusHeaderMachine mStatusHeaderMachine;
     private Runnable mStatusHeaderUpdater;
 
@@ -3619,7 +3618,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         if (newTheme != null &&
                 (mCurrentTheme == null || !mCurrentTheme.equals(newTheme))) {
             mCurrentTheme = (CustomTheme)newTheme.clone();
-            recreateStatusBar();
+            //recreateStatusBar();
         } else {
 
             if (mClearButton instanceof TextView) {
@@ -3631,6 +3630,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         // Update the QuickSettings container
         if (mQS != null) mQS.updateResources();
 
+        loadDimens();
     }
 
     protected void loadDimens() {
