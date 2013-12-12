@@ -19,6 +19,8 @@ package com.android.systemui.statusbar.phone;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Configuration;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -147,13 +149,19 @@ public class NotificationPanelView extends PanelView {
             boolean swipeFlipJustFinished = false;
             boolean swipeFlipJustStarted = false;
             boolean flip = false;
+            ContentResolver resolver =  mContext.getContentResolver();
+            boolean mFullScreenDetection  = Settings.System.getBoolean(resolver, Settings.System.SWIPE_TO_SWITCH_SCREEN_DETECTION, false);
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN:
                     mGestureStartX = event.getX(0);
                     mGestureStartY = event.getY(0);
-                    mTrackingSwipe = isFullyExpanded() &&
+                    if (mFullScreenDetection) {
+                        mTrackingSwipe = isFullyExpanded();
+                    } else {
+                        mTrackingSwipe = isFullyExpanded() &&
                         // Pointer is at the handle portion of the view?
                         mGestureStartY > getHeight() - mHandleBarHeight - getPaddingBottom();
+                    }
                     mOkToFlip = getExpandedHeight() == 0;
                     int quickPulldownMode = Settings.System.getIntForUser(
                             getContext().getContentResolver(), Settings.System.QS_QUICK_PULLDOWN,

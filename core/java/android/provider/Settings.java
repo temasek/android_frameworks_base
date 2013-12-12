@@ -4117,6 +4117,13 @@ public final class Settings {
         public static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
         /**
+         * Wether to allow full screen swipe detection on notification drawer
+         * for swipe to switch or not
+         * @hide
+         */
+        public static final String SWIPE_TO_SWITCH_SCREEN_DETECTION = "full_swipe_to_switch_detection";
+
+        /**
          * ListView Animations
          * 0 == None
          * 1 == Wave (Left)
