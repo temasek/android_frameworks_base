@@ -41,6 +41,16 @@
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
     <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> used</string>
 
+    <!-- Temasek Shortcut Actions -->
+    <string name="shortcut_picker">Temasek Shortcuts</string>
+    <string name="shortcut_immersive">Immersive Mode Toggle</string>
+    <string name="shortcut_quiethours">Quiethours Toggle</string>
+    <string name="shortcut_rotation">Rotation Lock Toggle</string>
+    <string name="shortcut_torch">Torch Toggle</string>
+    <string name="shortcut_reboot">Reboot (instant)</string>
+    <string name="shortcut_last_app">Last App</string>
+    <string name="shortcut_screenshot">Screenshot</string>
+
     <!-- Quick Settings -->
     <string name="quick_settings_gps">GPS</string>
     <string name="quick_settings_gps_off">GPS off</string>
