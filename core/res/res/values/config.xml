@@ -1455,4 +1455,7 @@
          performance profiles  -->
     <string name="config_perf_profile_default_entry" translatable="false"></string>
 
+    <!-- Enable statusbar double tap gesture to put device to sleep -->
+    <bool name="config_disableDoubleTapSleepGesture">false</bool>
+
 </resources>
