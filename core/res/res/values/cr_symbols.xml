@@ -95,5 +95,8 @@
   <java-symbol type="string" name="minutes" />
   <java-symbol type="string" name="second" />
   <java-symbol type="string" name="seconds" />
+
+  <!-- UI theme mode -->
+  <java-symbol type="integer" name="config_uiThemeMode" />
   
 </resources>
