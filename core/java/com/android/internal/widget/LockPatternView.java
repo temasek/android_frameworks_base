@@ -173,7 +173,6 @@ public class LockPatternView extends View {
             return sCells[row][column];
         }
 
-
         public static void updateSize(byte size) {
             sCells = new Cell[size][size];
             for (int i = 0; i < size; i++) {
@@ -1008,7 +1007,6 @@ public class LockPatternView extends View {
     private void drawCircle(Canvas canvas, int leftX, int topY, boolean partOfPattern) {
         Bitmap outerCircle;
         Bitmap innerCircle;
-
         if (!partOfPattern || (mInStealthMode && mPatternDisplayMode != DisplayMode.Wrong)) {
             // unselected circle
             outerCircle = mBitmapCircleDefault;

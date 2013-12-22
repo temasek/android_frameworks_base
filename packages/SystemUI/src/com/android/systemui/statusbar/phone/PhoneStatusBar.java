@@ -710,7 +710,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
 
         addNavigationBar();
 
-	// status bar brightness control observer
+        // status bar brightness control observer
         SettingsObserver observer = new SettingsObserver(mHandler);
         observer.observe();
 
@@ -733,7 +733,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
 
         Resources res = context.getResources();
 
-	// status bar brightness control
+        // status bar brightness control
         mScreenWidth = (float) context.getResources().getDisplayMetrics().widthPixels;
         mMinBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_screenBrightnessDim);
@@ -2679,7 +2679,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
                 setInteracting(StatusBarManager.WINDOW_STATUS_BAR, true);
             }
         }
-	if (mBrightnessControl) {
+        if (mBrightnessControl) {
             brightnessControl(event);
             if ((mDisabled & StatusBarManager.DISABLE_EXPAND) != 0) {
                 return true;
@@ -3040,7 +3040,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
 
         @Override
         public void tickerDone() {
-	    if (!mHaloActive) {
+            if (!mHaloActive) {
                 mStatusBarContents.setVisibility(View.VISIBLE);
                 mCenterClockLayout.setVisibility(View.VISIBLE);
                 mTickerView.setVisibility(View.GONE);
@@ -3050,11 +3050,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
                 mCenterClockLayout.startAnimation(
                     loadAnim(com.android.internal.R.anim.push_down_in,
                     null));
-	    }
+            }
         }
 
         public void tickerHalting() {
-	    if (!mHaloActive) {
+            if (!mHaloActive) {
                 if (mStatusBarContents.getVisibility() != View.VISIBLE) {
                     mStatusBarContents.setVisibility(View.VISIBLE);
                     mStatusBarContents
@@ -3067,7 +3067,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
                 }
                 mTickerView.setVisibility(View.GONE);
                 // we do not animate the ticker away at this point, just get rid of it (b/6992707)
-	    }
+            }
         }
     }
 
@@ -3468,7 +3468,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
                 notifyHeadsUpScreenOn(false);
                 cancelAutohide();
                 doAutoHide(true);
-		finishBarAnimations();
+                finishBarAnimations();
             } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
                 mScreenOn = true;
                 // work around problem where mDisplay.getRotation() is not stable while screen is off (bug 7086018)

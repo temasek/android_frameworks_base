@@ -219,7 +219,6 @@ public class LockSettingsService extends ILockSettings.Stub {
         return readFromDb(key, defaultValue, userId);
     }
 
-
     @Override
     public byte getLockPatternSize(int userId) {
         try {
@@ -246,6 +245,7 @@ public class LockSettingsService extends ILockSettings.Stub {
                 android.os.Environment.getDataDirectory().getAbsolutePath() +
                 SYSTEM_DIRECTORY;
         String patternFile = (defaultSize ? "" : "cm_") + LOCK_PATTERN_FILE;
+
         if (userId == 0) {
             // Leave it in the same place for user 0
             return dataSystemDirectory + patternFile;
@@ -545,7 +545,7 @@ public class LockSettingsService extends ILockSettings.Stub {
         Secure.LOCK_PATTERN_ENABLED,
         Secure.LOCK_BIOMETRIC_WEAK_FLAGS,
         Secure.LOCK_PATTERN_VISIBLE,
-        Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED
+        Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED,
     };
 
     // These are protected with a read permission
