@@ -275,6 +275,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     private boolean mShowCarrierInPanel = false;
 
     private boolean mRecreating = false;
+    private boolean mTickerInProgress = false;
+    private final Object mLock = new Object();
 
     // position
     int[] mPositionTmp = new int[2];
@@ -794,20 +796,22 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
 
         updateShowSearchHoldoff();
 
-        if (mNavigationBarView == null) {
-            mNavigationBarView =
-                (NavigationBarView) View.inflate(context, R.layout.navigation_bar, null);
-        }
-
-        mNavigationBarView.setDisabledFlags(mDisabled);
-        mNavigationBarView.setBar(this);
-        mNavigationBarView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                checkUserAutohide(v, event);
-                return false;
+        if (!mRecreating) {
+            if (mNavigationBarView == null) {
+                mNavigationBarView =
+                    (NavigationBarView) View.inflate(context, R.layout.navigation_bar, null);
             }
-        });
+
+            mNavigationBarView.setDisabledFlags(mDisabled);
+            mNavigationBarView.setBar(this);
+            mNavigationBarView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    checkUserAutohide(v, event);
+                    return false;
+                }
+            });
+        }
 
         if (mRecreating) {
         } else {
@@ -2997,15 +3001,21 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         // not for you
         if (!notificationIsForCurrentUser(n)) return;
 
-        // Show the ticker if one is requested. Also don't do this
-        // until status bar window is attached to the window manager,
-        // because...  well, what's the point otherwise?  And trying to
-        // run a ticker without being attached will crash!
-        if (n.getNotification().tickerText != null && mStatusBarContainer.getWindowToken() != null) {
-            if (0 == (mDisabled & (StatusBarManager.DISABLE_NOTIFICATION_ICONS
-                            | StatusBarManager.DISABLE_NOTIFICATION_TICKER))) {
-                mTicker.addEntry(n);
+        mTickerInProgress = true;
+        synchronized(mLock) {
+            // Show the ticker if one is requested. Also don't do this
+            // until status bar window is attached to the window manager,
+            // because...  well, what's the point otherwise?  And trying to
+            // run a ticker without being attached will crash!
+            if (n.getNotification().tickerText != null
+                        && mStatusBarWindow.getWindowToken() != null) {
+                if (0 == (mDisabled & (StatusBarManager.DISABLE_NOTIFICATION_ICONS
+                                | StatusBarManager.DISABLE_NOTIFICATION_TICKER))) {
+                    mTicker.addEntry(n);
+                }
             }
+            mTickerInProgress = false;
+            mLock.notifyAll();
         }
     }
 
@@ -3602,9 +3612,16 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
 
     private void recreateStatusBar(boolean recreateNavigationBar) {
         mRecreating = true;
+        synchronized(mLock){
+            while (mTickerInProgress){
+                try {
+                    mLock.wait();
+                } catch (InterruptedException e) {
+                    // bad bad
+                }
+            }
+        }
         mStatusBarContainer.removeAllViews();
-        mStatusBarView.postInvalidate();
-        updateDisplaySize();
 
         // extract icons from the soon-to-be recreated viewgroup.
         int nIcons = mStatusIcons.getChildCount();
@@ -3628,8 +3645,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         if (mNavigationBarView != null && recreateNavigationBar) {
             // recreate and reposition navigationbar
             mNavigationBarView.recreateNavigationBar();
-            repositionNavigationBar();
         }
+        repositionNavigationBar();
 
         // recreate StatusBarIconViews.
         for (int i = 0; i < nIcons; i++) {
@@ -3639,13 +3656,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         }
 
         // recreate notifications.
-        Entry shadeEntry = null;
         for (int i = 0; i < nNotifs; i++) {
             Pair<IBinder, StatusBarNotification> notifData = notifications.get(i);
-            shadeEntry = createNotificationViews(notifData.first, notifData.second);
-        }
-        if (shadeEntry != null) {
-            addNotificationViews(shadeEntry);
+            addNotificationViews(createNotificationViews(notifData.first, notifData.second));
         }
 
         setAreThereNotifications();
@@ -3653,7 +3666,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         mStatusBarContainer.addView(mStatusBarWindow);
 
         updateExpandedViewPos(EXPANDED_LEAVE_ALONE);
-        //mNotificationShortcutsLayout.recreateShortcutLayout();
+
         mRecreating = false;
     }
 
