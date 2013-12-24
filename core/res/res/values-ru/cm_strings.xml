@@ -18,7 +18,7 @@
     <string name="reboot_system" product="default">Перезагрузка телефона</string>
     <string name="global_action_screenshot">Скриншот</string>
     <string name="global_actions_toggle_expanded_desktop_mode">Расширенный экран</string>
-    <string name="global_actions_expanded_desktop_mode_on_status">Включён</string>
+    <string name="global_actions_expanded_desktop_mode_on_status">Включен</string>
     <string name="global_actions_expanded_desktop_mode_off_status">Выключен</string>
     <string name="reboot_reboot">Перезагрузка</string>
     <string name="reboot_progress">Перезагрузка\u2026</string>
@@ -75,4 +75,14 @@
     <string name="perf_profile_pwrsv">Экономия энергии</string>
     <string name="perf_profile_bal">Сбалансированный</string>
     <string name="perf_profile_perf">Высокая производительность</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_sendMockSms">Отправка макетов смс-сообщений</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_sendMockSms">Приложение сможет отправлять макеты смс-сообщений.
+        Это позволит приложению отправлять смс от доверенных программ. Вредоносные программы могут отправлять сообщения
+        непрерывно, блокируя систему уведомлений и нарушая работу устройства.</string>
+		
+    <string name="lockscreen_discharging">Разряжается, <xliff:g id="number">%d</xliff:g><xliff:g id="percent">%%</xliff:g></string>
+	
 </resources>
