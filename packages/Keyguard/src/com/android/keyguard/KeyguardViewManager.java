@@ -36,6 +36,7 @@ import android.content.ContentResolver;
 import android.database.ContentObserver;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
@@ -107,11 +108,12 @@ public class KeyguardViewManager {
     private Bitmap mBlurredImage = null;
     private int mBlurRadius = 12;
     private boolean mSeeThrough = false;
+    private boolean mIsCoverflow = true;
 
     private KeyguardUpdateMonitorCallback mBackgroundChanger = new KeyguardUpdateMonitorCallback() {
         @Override
         public void onSetBackground(Bitmap bmp) {
-            mKeyguardHost.setCustomBackground( new BitmapDrawable(mContext.getResources(), 
+            mKeyguardHost.setCustomBackground( new BitmapDrawable(mContext.getResources(),
                         bmp != null ? bmp : mBlurredImage) );
             updateShowWallpaper(bmp == null && mBlurredImage == null);
         }
@@ -345,8 +347,8 @@ public class KeyguardViewManager {
 
             final int vWidth = getWidth();
             final int vHeight = getHeight();
- 
-            if (bgWidth == vWidth && bgHeight == vHeight) {
+
+            if (!mIsCoverflow) {
                 background.setBounds(0, 0, vWidth, vHeight);
                 return;
             }
@@ -542,7 +544,7 @@ public class KeyguardViewManager {
     }
 
     SparseArray<Parcelable> mStateContainer = new SparseArray<Parcelable>();
-
+    int mLastRotation = 0;
     private void maybeCreateKeyguardLocked(boolean enableScreenRotation, boolean force,
             Bundle options) {
         if (mKeyguardHost != null) {
@@ -594,13 +596,25 @@ public class KeyguardViewManager {
         }
 
         if(mBlurredImage != null) {
+            int currentRotation = mKeyguardView.getDisplay().getRotation() * 90;
+            mBlurredImage = rotateBmp(mBlurredImage, mLastRotation - currentRotation);
+            mLastRotation = currentRotation;
+            mIsCoverflow = false;
             KeyguardUpdateMonitor.getInstance(mContext).dispatchSetBackground(mBlurredImage);
+        } else {
+            mIsCoverflow = true;
         }
 
         updateUserActivityTimeoutInWindowLayoutParams();
         mViewManager.updateViewLayout(mKeyguardHost, mWindowLayoutParams);
 
         mKeyguardHost.restoreHierarchyState(mStateContainer);
+    }
+
+    private Bitmap rotateBmp(Bitmap bmp, int degrees) {
+        Matrix m = new Matrix();
+        m.postRotate(degrees);
+        return Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), m, true);
     }
 
     private void inflateKeyguardView(Bundle options) {
