@@ -3122,6 +3122,12 @@ public final class Settings {
          public static final String STATUSBAR_CLOCK_DATE_FORMAT = "statusbar_clock_date_format";
 
         /**
+         * Settings for clock font style
+         * @hide
+         */
+        public static final String STATUSBAR_CLOCK_FONT_STYLE = "statusbar_clock_font_style";
+
+        /**
          * Whether to show the signal text or signal bars.
          * default: 0
          * 0: show signal bars
@@ -3842,6 +3848,7 @@ public final class Settings {
         /**
          * Action to perform when the assistant (search) key is pressed. (Default is 3)
          * (See KEY_HOME_LONG_PRESS_ACTION for valid values)
+
          * @hide
          */
         public static final String KEY_ASSIST_ACTION = "key_assist_action";
