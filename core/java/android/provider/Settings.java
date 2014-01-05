@@ -4025,6 +4025,12 @@ public final class Settings {
         public static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
 
         /**
+         * Settings for clock font style
+         * @hide
+         */
+        public static final String STATUSBAR_CLOCK_FONT_STYLE = "statusbar_clock_font_style";
+
+        /**
          * Whether incomming call UI stays in background
          *
          * @hide
