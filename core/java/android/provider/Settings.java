@@ -1028,6 +1028,7 @@ public final class Settings {
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_VISIBLE);
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED);
 	    MOVED_TO_SECURE.add(Secure.LOCK_NUMPAD_RANDOM);
+	    MOVED_TO_SECURE.add(Secure.LOCK_BEFORE_UNLOCK);
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_SIZE);
             MOVED_TO_SECURE.add(Secure.LOCK_DOTS_VISIBLE);
             MOVED_TO_SECURE.add(Secure.LOCK_SHOW_ERROR_PATH);
@@ -4575,6 +4576,12 @@ public final class Settings {
         public static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
 
         /**
+         *Whether lock before unlock is enabled or disabled
+         * @hide
+         */
+        public static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+
+        /**
          * Whether lock pattern will vibrate as user enters (0 = false, 1 =
          * true)
          *
@@ -4647,14 +4654,6 @@ public final class Settings {
          */
         public static final String LOCK_SCREEN_OWNER_INFO_ENABLED =
             "lock_screen_owner_info_enabled";
-
-        /**
-         * Whether the unsecure widget screen will be shown before a secure
-         * lock screen
-         * @hide
-         */
-        public static final String LOCK_BEFORE_UNLOCK =
-            "lock_before_unlock";
 
         /**
          * The Logging ID (a unique 64-bit value) as a hex string.
