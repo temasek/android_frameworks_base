@@ -118,9 +118,8 @@ public class StatusBarIconView extends AnimatedImageView {
             setImageLevel(icon.iconLevel);
         }
 
-        if (!numberEquals) {
-            if (icon.number > 0 && mContext.getResources().getBoolean(
-                        R.bool.config_statusBarShowNumber)) {
+        if (!numberEquals || force) {
+            if (icon.number > 1 && mShowNotificationCount) {
                 if (mNumberBackground == null) {
                     mNumberBackground = getContext().getResources().getDrawable(
                             R.drawable.ic_notification_overlay);
