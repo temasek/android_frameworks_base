@@ -586,9 +586,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                     }
                 }
 
-                mNotificationBlamePopup
-                .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
                 MenuItem hideIconCheck = mNotificationBlamePopup.getMenu().findItem(R.id.notification_hide_icon_packages);
                 if(hideIconCheck != null) {
                     hideIconCheck.setChecked(isIconHiddenByUser(packageNameF));
@@ -598,7 +595,8 @@ public abstract class BaseStatusBar extends SystemUI implements
                     }
                 }
 
-                mNotificationBlamePopup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                mNotificationBlamePopup
+                .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getItemId() == R.id.notification_inspect_item) {
                             startApplicationDetailsActivity(packageNameF);
