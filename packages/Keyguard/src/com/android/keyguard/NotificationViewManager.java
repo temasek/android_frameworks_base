@@ -158,7 +158,7 @@ public class NotificationViewManager {
                     if (event.values[0] >= ProximitySensor.getMaximumRange()) {
                         if (config.pocketMode && mTimeCovered != 0 && (config.showAlways || mHostView.getNotificationCount() > 0)
                                 && System.currentTimeMillis() - mTimeCovered > MIN_TIME_COVERED
-                                && !QuietHoursHelper.inQuietHours(mContext, Settings.System.QUIET_HOURS_DIM)) {
+                                && !QuietHoursUtils.inQuietHours(mContext, Settings.System.QUIET_HOURS_DIM)) {
                             wakeDevice();
                             mWokenByPocketMode = true;
                             mHostView.showAllNotifications();
