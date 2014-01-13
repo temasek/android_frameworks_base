@@ -4018,13 +4018,6 @@ public final class Settings {
         public static final String NON_INTRUSIVE_INCALL = "non_intrusive_incall";
 
         /**
-         * Should call status sounds be player
-         *
-         * @hide
-         */
-        public static final String CALL_END_SOUND = "call_end_sound";
-
-        /**
           * Volume keys control cursor in text fields (default is 0)
           * 0 - Disabled
           * 1 - Volume up/down moves cursor left/right
