@@ -52,4 +52,7 @@
     <string name="shortcut_screenshot">Снимок экрана</string>
     <string name="shortcut_screensleep">Сон</string>
 	
+    <!-- Allow hiding notification icons -->
+    <string name="status_bar_notification_hide_icon_packages">Скрыть иконку(и) уведомления у приложения(ий)</string>
+	
 </resources>
