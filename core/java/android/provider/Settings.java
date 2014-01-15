@@ -2485,6 +2485,12 @@ public final class Settings {
         public static final String HAPTIC_FEEDBACK_ENABLED = "haptic_feedback_enabled";
 
         /**
+         * Minimum vibration duration in milliseconds (0-100ms)
+         * @hide
+         */
+        public static final String MINIMUM_VIBRATION_DURATION = "minimum_vibration_duration";
+
+        /**
          * @deprecated Each application that shows web suggestions should have its own
          * setting for this.
          */
@@ -3609,6 +3615,13 @@ public final class Settings {
         public static final String QS_QUICK_PULLDOWN = "qs_quick_pulldown";
 
         /**
+         * Quick Settings Collapse Pane
+         *
+         * @hide
+         */
+        public static final String QS_COLLAPSE_PANEL = "qs_collapse_panel";
+
+        /**
          * Display style of the status bar battery information
          * default: 0
          * @hide
@@ -4016,6 +4029,14 @@ public final class Settings {
          * @hide
          */
         public static final String CALL_UI_IN_BACKGROUND = "call_ui_in_background";
+
+        /**
+         * Whether flip action during incomming call should mute or dismiss
+         * the call (mute = 0, dismiss = 1, nothing = 2 (default))
+         *
+         * @hide
+         */
+        public static final String CALL_FLIP_ACTION_KEY = "call_flip_action_key";
 
          /**
           * Volume keys control cursor in text fields (default is 0)

@@ -46,9 +46,12 @@ import java.lang.NumberFormatException;
 
 public class CreateShortcut extends LauncherActivity {
 
+
     private static final int DLG_SECRET = 0;
     private static final int DLG_SECRET_CHK = 1;
     private static final int DLG_SECRET_INT = 2;
+    private static final int DLG_SECRET_NAME = 3;
+    private static final int DLG_TOGGLE = 4;
 
     private static final int SYSTEM_INT = 0;
     private static final int SECURE_INT = 1;
@@ -61,6 +64,8 @@ public class CreateShortcut extends LauncherActivity {
 
     private Intent mShortcutIntent;
     private Intent mIntent;
+
+    private CharSequence mName = null;
 
     @Override
     protected Intent getTargetIntent() {
@@ -88,12 +93,18 @@ public class CreateShortcut extends LauncherActivity {
         mShortcutIntent.setClassName(this, intentClass);
         mShortcutIntent.setAction(intentAction);
 
+        mName = itemForPosition(position).label;
+
         mIntent = new Intent();
         mIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON,
                 BitmapFactory.decodeResource(getResources(), returnIconResId(className)));
-        mIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, itemForPosition(position).label);
+        mIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, mName);
         if (className.equals("ChamberOfSecrets")) {
             showDialogSetting(DLG_SECRET);
+        } else if (className.equals("Immersive")
+                || className.equals("QuietHours")
+                || className.equals("Rotation")) {
+            showDialogSetting(DLG_TOGGLE);
         } else {
             finalizeIntent();
         }
@@ -110,12 +121,18 @@ public class CreateShortcut extends LauncherActivity {
             return R.drawable.ic_qs_torch_on;
         } else if (c.equals("LastApp")) {
             return R.drawable.ic_sysbar_lastapp;
+        } else if (c.equals("PowerMenu")) {
+            return R.drawable.ic_sysbar_power_menu;
         } else if (c.equals("Reboot")) {
             return R.drawable.ic_qs_reboot;
+        } else if (c.equals("Recovery")) {
+            return R.drawable.ic_qs_reboot_recovery;
         } else if (c.equals("Screenshot")) {
             return R.drawable.ic_sysbar_screenshot;
         } else if (c.equals("SleepScreen")) {
             return R.drawable.ic_qs_sleep;
+        } else if (c.equals("VolumePanel")) {
+            return R.drawable.ic_qs_volume;
         } else if (c.equals("ChamberOfSecrets")) {
             return R.drawable.ic_qs_reboot_recovery;
         } else {
@@ -140,7 +157,7 @@ public class CreateShortcut extends LauncherActivity {
         if (isCheck) {
             String check = "0,1";
             mShortcutIntent.putExtra("array", check);
-            finalizeIntent();
+            showDialogSetting(DLG_SECRET_NAME);
         } else {
             showDialogSetting(DLG_SECRET_INT);
         }
@@ -148,6 +165,17 @@ public class CreateShortcut extends LauncherActivity {
 
     private void setSettingArray(String array) {
         mShortcutIntent.putExtra("array", array);
+        showDialogSetting(DLG_SECRET_NAME);
+    }
+
+    private void checkIntentName(String name) {
+        if (name != null && name.length() > 0) {
+            mIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
+        } else {
+            Toast.makeText(CreateShortcut.this,
+                    R.string.chamber_name_toast,
+                    Toast.LENGTH_LONG).show();
+        }
         finalizeIntent();
     }
 
@@ -324,6 +352,51 @@ public class CreateShortcut extends LauncherActivity {
                     }
                 });
                 alertInt.show();
+                break;
+            case DLG_SECRET_NAME:
+                final EditText inputName = new EditText(this);
+
+                AlertDialog.Builder alertName = new AlertDialog.Builder(this);
+                alertName.setTitle(R.string.chamber_name_title)
+                .setMessage(R.string.chamber_name_message)
+                .setView(inputName)
+                .setNegativeButton(R.string.cancel,
+                    new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        checkIntentName(null);
+                    }
+                })
+                .setPositiveButton(R.string.dlg_ok,
+                    new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = inputName.getText().toString();
+                        checkIntentName(name);
+                    }
+                });
+                alertName.show();
+            case DLG_TOGGLE:
+                final CharSequence[] items = {
+                    getResources().getString(R.string.off),
+                    getResources().getString(R.string.on),
+                    getResources().getString(R.string.toggle),
+                };
+                AlertDialog.Builder alertToggle = new AlertDialog.Builder(this);
+                alertToggle.setTitle(R.string.shortcut_toggle_title)
+                .setNegativeButton(R.string.cancel,
+                    new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, final int item) {
+                        mShortcutIntent.putExtra("value", item);
+                        mIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
+                                mName + " " + items[item]);
+                        finalizeIntent();
+                    }
+                });
+                alertToggle.show();
                 break;
         }
     }
