@@ -4303,12 +4303,6 @@ public final class Settings {
         public static final String SCREEN_RECORDER_BITRATE = "screen_recorder_bitrate";
 
         /**
-         * Whether the lockscreen vibrate should be enabled.
-         * @hide
-         */
-        public static final String LOCKSCREEN_VIBRATE_ENABLED = "lockscreen.vibrate_enabled";
-
-        /**
          *  Enable statusbar double tap gesture on to put device to sleep
          * @hide
          */
@@ -4419,7 +4413,6 @@ public final class Settings {
             POWER_MENU_AIRPLANE_ENABLED,
             POWER_MENU_SOUND_ENABLED,
             POWER_MENU_USER_ENABLED,
-            LOCKSCREEN_VIBRATE_ENABLED,
             PHONE_BLACKLIST_ENABLED,
             PHONE_BLACKLIST_NOTIFY_ENABLED,
             PHONE_BLACKLIST_PRIVATE_NUMBER_MODE,
