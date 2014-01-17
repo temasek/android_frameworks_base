@@ -35,4 +35,12 @@
     <!-- Description of an application permission that lets lets an application access the ThemeManagerService -->
     <string name="permdesc_accessThemeService">Позволяет приложению установку или сброс темы оформления. Не для использования обычными приложениями.</string>
 
+    <!-- label for screen record item in phone options dialog -->
+    <string name="global_action_screen_record">Запись с экрана</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_recordScreen">Записывать контент, отображаемый на экране</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_recordScreen">Разрешить приложению производить запись пользовательского экрана.</string>
+
 </resources>
