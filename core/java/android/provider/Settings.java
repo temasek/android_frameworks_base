@@ -3163,6 +3163,11 @@ public final class Settings {
         public static final int STATUS_BAR_COLLAPSE_IF_NO_CLEARABLE = 2;
 
         /**
+         * @hide
+         */
+        public static final String HIDE_BATTERY_ICON = "hide_battery_icon";
+
+        /**
          * Whether to use a separate delay for "slide to unlock" and security
          * lock
          * @hide
