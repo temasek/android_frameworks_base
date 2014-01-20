@@ -95,9 +95,5 @@
   <java-symbol type="string" name="minutes" />
   <java-symbol type="string" name="second" />
   <java-symbol type="string" name="seconds" />
-
-  <!-- Halo -->
-  <java-symbol type="style" name="Theme.DeviceDefault.FloatingWindow" />
-  <java-symbol type="style" name="Theme.DeviceDefault.FloatingWindowLight" />
   
 </resources>

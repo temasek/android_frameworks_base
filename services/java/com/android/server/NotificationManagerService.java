@@ -82,7 +82,6 @@ import com.android.internal.R;
 import com.android.internal.notification.NotificationScorer;
 import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.cm.QuietHoursUtils;
-import com.android.internal.util.FastXmlSerializer;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlSerializer;
