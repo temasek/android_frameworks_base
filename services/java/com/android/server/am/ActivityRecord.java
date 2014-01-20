@@ -430,18 +430,15 @@ final class ActivityRecord {
 
             ActivityStack stack = task == null ? null : task.stack;
 
-            floatingWindow = (intent.getFlags() & Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW
-                    && (intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) != Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY;
+            floatingWindow = (intent.getFlags() & Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
 
             TaskRecord baseRecord = stack != null && stack.mTaskHistory.size() > 0 ? stack.mTaskHistory.get(stack.mTaskHistory.size() -1) : null;
-
 
             if (baseRecord != null) {
 
                 ActivityRecord record = baseRecord.mActivities.size() > 0 ? baseRecord.mActivities.get(baseRecord.mActivities.size() - 1) : null;
 
-                final boolean floats = (baseRecord.intent.getFlags() & Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW
-                        && (baseRecord.intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) != Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY;
+                final boolean floats = (baseRecord.intent.getFlags() & Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
                 final boolean taskAffinity = record == null ? false : aInfo.applicationInfo.packageName.equals(record.packageName);
                 newTask = (intent.getFlags() & Intent.FLAG_ACTIVITY_NEW_TASK) == Intent.FLAG_ACTIVITY_NEW_TASK;
 
@@ -460,6 +457,7 @@ final class ActivityRecord {
             if (floatingWindow) {
                 intent.setFlags(intent.getFlags() & ~Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                 intent.setFlags(intent.getFlags() & ~Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -471,8 +469,6 @@ final class ActivityRecord {
 
                 // Change theme
                 realTheme = com.android.internal.R.style.Theme_DeviceDefault_FloatingWindow;
-            } else {
-                intent.setFlags(intent.getFlags() & ~Intent.FLAG_FLOATING_WINDOW);
             }
 
             if ((aInfo.flags&ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0) {
