@@ -2402,7 +2402,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mScrollView.setVisibility(View.GONE);
             mScrollView.setScaleX(0f);
             mNotificationButton.setVisibility(View.VISIBLE);
-            mNotificationButton.setAlpha(percent);
+            mNotificationButton.setAlpha(progress);
             updateCarrierAndWifiLabelVisibility(true);
             updateNotificationShortcutsVisibility(false);
         }
