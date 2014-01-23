@@ -12,4 +12,6 @@
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
     <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> used</string>
 
+    <string name="status_bar_notification_hide_icon_packages">Hide status bar app\'s notification icon(s)</string>
+
 </resources>
