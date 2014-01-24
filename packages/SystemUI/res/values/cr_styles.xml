@@ -73,4 +73,9 @@
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style>
 
+    <style name="TextAppearance.StatusBar.Time" parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textSize">@dimen/notification_subtext_size</item>
+        <item name="android:textColor">#999999</item>
+    </style>
+
 </resources>
