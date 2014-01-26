@@ -47,10 +47,16 @@
     <string name="shortcut_quiethours">Тихие часы</string>
     <string name="shortcut_rotation">Поворот экрана блокировки</string>
     <string name="shortcut_torch">Фонарик</string>
-    <string name="shortcut_reboot">Перезагрузка (мгновенно)</string>
+    <string name="shortcut_reboot">Перезагрузка</string>
+    <string name="shortcut_recovery">Режим восстановления</string>
     <string name="shortcut_last_app">Последнее приложение</string>
+    <string name="shortcut_power_menu">Меню кнопки питания</string>
     <string name="shortcut_screenshot">Снимок экрана</string>
     <string name="shortcut_screensleep">Сон</string>
+    <string name="shortcut_volume">Громкость</string>
+	
+    <string name="quick_settings_theme_switch_dark">Тёмная тема</string>
+    <string name="quick_settings_theme_switch_light">Светлая тема</string>
 	
     <!-- Allow hiding notification icons -->
     <string name="status_bar_notification_hide_icon_packages">Скрыть иконку(и) уведомления у приложения(ий)</string>
