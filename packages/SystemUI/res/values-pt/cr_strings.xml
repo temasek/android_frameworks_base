@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Content description of the halo button in the notification panel for accessibility (not sho
+         wn on the screen). [CHAR LIMIT=NONE] -->  
+    <string name="accessibility_halo">Criar notificação halo.</string>
+
+    <!-- HALO -->
+    <string name="halo_dismiss">Dispensar notificação</string>
+    <string name="halo_hide">Esconder</string>
+    <string name="halo_clear_all">Dispensar todas as notificações</string>
+    <string name="halo_silence">Esconder &amp; silenciar até ser acordado </string>
+    <string name="halo_tutorial1">Esse é o HALO</string>
+    <string name="halo_tutorial2">Mova me: 2x-toque &amp; arraste</string>
+    <string name="halo_tutorial3">Procurar tarefas: Arrastar horizontalmente</string>
+
+    <!-- Power menu -->
+    <string name="quick_settings_powermenu_label">Power Menu</string>
+
+    <!-- Recents Ram Bar -->
+    <string name="memory">RAM</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
+    <string name="service_free_mem"><xliff:g id="memory">%1$s</xliff:g> livre</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
+    <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> usada</string>
+
+    <string name="status_bar_notification_hide_icon_packages">Esconder ícone da barra de status</string>
+
+</resources>
