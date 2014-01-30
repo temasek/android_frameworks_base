@@ -103,6 +103,9 @@ public class UserTile extends QuickSettingsTile {
         if (tv != null) {
             tv.setText(mLabel);
             tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTileTextSize);
+            if (mTileTextColor != -2) {
+                tv.setTextColor(mTileTextColor);
+            }
         }
         iv.setImageDrawable(userAvatar);
     }
