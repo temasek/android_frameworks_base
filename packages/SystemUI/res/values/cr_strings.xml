@@ -14,4 +14,8 @@
 
     <string name="status_bar_notification_hide_icon_packages">Hide status bar app\'s notification icon(s)</string>
 
+    <!-- TRDS -->
+    <string name="quick_settings_theme_switch_dark">Dark theme</string>
+    <string name="quick_settings_theme_switch_light">Light theme</string>
+
 </resources>
