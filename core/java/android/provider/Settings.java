@@ -3835,6 +3835,13 @@ public final class Settings {
          */
         public static final String QS_QUICK_PULLDOWN = "qs_quick_pulldown";
 
+
+        /**
+        * Set a custom notification background color
+        * @hide
+        */
+        public static final String LOCKSCREEN_NOTIFICATIONS_COLOR = "lockscreen_notifications_color";
+
         /**
          * Quick Settings Collapse Pane
          *
