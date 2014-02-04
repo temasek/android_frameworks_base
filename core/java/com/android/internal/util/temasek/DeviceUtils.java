@@ -33,6 +33,7 @@ import com.android.internal.telephony.PhoneConstants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
 
 public class DeviceUtils {
 
@@ -95,6 +96,18 @@ public class DeviceUtils {
                 }
         } catch (Exception e) {
         }
+        return false;
+    }
+
+    public static boolean deviceSupportsFastCharge(Context context) {
+        String fchargePath = context.getResources()
+                    .getString(com.android.internal.R.string.config_fastChargePath);
+            if (!fchargePath.isEmpty()) {
+                File fastcharge = new File(fchargePath);
+                if (fastcharge.exists() && fastcharge.canWrite()) {
+                    return true;
+                }
+            }
         return false;
     }
 

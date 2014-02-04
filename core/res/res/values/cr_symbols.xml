@@ -102,5 +102,8 @@
 
   <!-- Hardware key rebinding -->
   <java-symbol type="integer" name="config_deviceHardwareKeys" />
+
+  <!-- fast charge -->
+  <java-symbol type="string" name="config_fastChargePath" />
   
 </resources>

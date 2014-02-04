@@ -53,6 +53,7 @@ import static com.android.internal.util.temasek.QSConstants.TILE_VOLUME;
 import static com.android.internal.util.temasek.QSConstants.TILE_WIFI;
 import static com.android.internal.util.temasek.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.temasek.QSConstants.TILE_REBOOT;
+import static com.android.internal.util.temasek.QSConstants.TILE_FCHARGE;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -105,6 +106,7 @@ import com.android.systemui.quicksettings.VolumeTile;
 import com.android.systemui.quicksettings.WiFiTile;
 import com.android.systemui.quicksettings.WifiAPTile;
 import com.android.systemui.quicksettings.RebootTile;
+import com.android.systemui.quicksettings.FChargeTile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -165,6 +167,7 @@ public class QuickSettingsController {
         boolean mobileDataSupported = DeviceUtils.deviceSupportsMobileData(mContext);
         boolean lteSupported = DeviceUtils.deviceSupportsLte(mContext);
         boolean torchSupported = DeviceUtils.deviceSupportsTorch(mContext);
+        boolean fastChargeSupported = DeviceUtils.deviceSupportsFastCharge(mContext);
 
         if (!bluetoothSupported) {
             TILES_DEFAULT.remove(TILE_BLUETOOTH);
@@ -183,6 +186,11 @@ public class QuickSettingsController {
         if (!torchSupported) {
             TILES_DEFAULT.remove(TILE_TORCH);
         }
+
+        if (!fastChargeSupported) {
+            TILES_DEFAULT.remove(TILE_FCHARGE);
+        }
+
 
         // Read the stored list of tiles
         ContentResolver resolver = mContext.getContentResolver();
@@ -255,6 +263,8 @@ public class QuickSettingsController {
                 qs = new ContactTile(mContext, this, findCustomKey(tile));
             } else if (tile.equals(TILE_THEME)) {
                 qs = new ThemeTile(mContext, this);
+            } else if (tile.contains(TILE_FCHARGE)) {
+                qs = new FChargeTile(mContext, this);
             }
 
             if (qs != null) {
