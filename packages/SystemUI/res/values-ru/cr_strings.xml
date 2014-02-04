@@ -55,6 +55,11 @@
     <string name="shortcut_screensleep">Сон</string>
     <string name="shortcut_volume">Громкость</string>
 	
+    <string name="quick_settings_music_schedule_title">Отключить таймер</string>
+    <string name="quick_settings_music_schedule_in_progress">Таймер в процессе...</string>
+    <string name="quick_settings_music_schedule_start">Запуск таймера</string>
+    <string name="quick_settings_music_schedule_cancel">Очистить таймер</string>
+    <string name="quick_settings_music_schedule_update">Обновить таймер</string>
     <string name="quick_settings_theme_switch_dark">Тёмная тема</string>
     <string name="quick_settings_theme_switch_light">Светлая тема</string>
 	
