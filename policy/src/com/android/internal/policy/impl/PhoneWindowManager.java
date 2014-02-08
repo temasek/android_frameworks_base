@@ -4305,6 +4305,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mHandler.post(mGlobalMenu);
     }
 
+    /** {@inheritDoc} */
+    public void toggleStatusBar() {
+        if (mExpandedDesktopMode > 0) {
+            requestTransientBars(mStatusBar);
+        }
+    }
+
     private void offsetInputMethodWindowLw(WindowState win) {
         int top = win.getContentFrameLw().top;
         top += win.getGivenContentInsetsLw().top;
