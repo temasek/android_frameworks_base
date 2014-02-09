@@ -1455,9 +1455,4 @@
         config to 7. -->
     <integer name="config_deviceHardwareKeys">0</integer>
 
-    <!-- empty string to disable, or eg: /sys/kernel/fast_charge/force_fast_charge
-         for a custom path the delivered kernel supports.
-         it is disabled by default so devices need to add an overlay to enable -->
-    <string name="config_fastChargePath" translatable="false"></string>
-
 </resources>
