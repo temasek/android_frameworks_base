@@ -4,5 +4,8 @@
 
   <!-- Navigation ring power menu -->
   <java-symbol type="drawable" name="ic_navigation_ring_power_menu" />
+
+  <!-- UI theme mode -->
+  <java-symbol type="integer" name="config_uiThemeMode" />
   
 </resources>
