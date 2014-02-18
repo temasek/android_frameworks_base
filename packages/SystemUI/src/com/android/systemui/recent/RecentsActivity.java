@@ -114,13 +114,12 @@ public class RecentsActivity extends Activity {
     }
 
     public static boolean forceOpaqueBackground(Context context) {
-        return WallpaperManager.getInstance(context).getWallpaperInfo() != null
-                && !ActivityManager.isHighEndGfx();
+        return WallpaperManager.getInstance(context).getWallpaperInfo() != null;
     }
 
     @Override
     public void onStart() {
-        // Hide wallpaper if it's not a static image and device is low-end
+        // Hide wallpaper if it's not a static image
         if (forceOpaqueBackground(this)) {
             updateWallpaperVisibility(false);
         } else {
