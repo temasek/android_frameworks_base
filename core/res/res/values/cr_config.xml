@@ -8,5 +8,11 @@
              2 UI_THEME_MODE_HOLO_DARK
              3 UI_THEME_MODE_HOLO_LIGHT -->
     <integer name="config_uiThemeMode">1</integer>
+
+    <!-- The duration (in milliseconds) of recent app screen animation. -->
+    <integer name="config_recentDefaultDur">300</integer>
+
+    <!-- The duration (in milliseconds) of recent app screen exit animation. -->
+    <integer name="config_recentExitDur">450</integer>
   
 </resources>
