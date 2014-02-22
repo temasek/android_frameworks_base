@@ -43,7 +43,7 @@
 
     <!-- Temasek Shortcut Actions -->
     <string name="shortcut_picker">Ярлыки от Temasek</string>
-    <string name="shortcut_immersive">Режим экрана</string>
+    <string name="shortcut_immersive">Режим погружения</string>
     <string name="shortcut_quiethours">Тихие часы</string>
     <string name="shortcut_rotation">Поворот экрана блокировки</string>
     <string name="shortcut_torch">Фонарик</string>
@@ -54,6 +54,19 @@
     <string name="shortcut_screenshot">Снимок экрана</string>
     <string name="shortcut_screensleep">Сон</string>
     <string name="shortcut_volume">Громкость</string>
+    <string name="shortcut_toggle_title">Действие для выполнения</string>
+    <string name="shortcut_chamber">Тайная комната</string>
+    <string name="chamber_disabled">Тайная комната закрыта</string>
+    <string name="chamber_title">Введите строку для настройки</string>
+    <string name="chamber_message">Введите строку для настройки, используя функцию ВКЛ. и ВЫКЛ. (флажок) или, если возможно, список предпочтений. Например, quiet_hours_ringer или аналогичный. Значения настроек можно найти в файле Settings.java. ПРЕДУПРЕЖДЕНИЕ: Этот процесс опасен!</string>
+    <string name="chamber_invalid">Это неверный ввод. Будьте осторожны.</string>
+    <string name="chamber_checkbox">Флажок</string>
+    <string name="chamber_chk_message">Установить флажок для этой настройки?</string>
+    <string name="chamber_int">Введите значения</string>
+    <string name="chamber_int_message">Введите значения, которые вы бы хотели, чтобы эта настройка переключалась между ними. Отделите их друг от друга запятыми. Для настройки цвета применять hex-значения, такие как #FF00aacc или базовые значения цветов, такие как red, green, yellow.</string>
+    <string name="chamber_name_title">Название ярлыка</string>
+    <string name="chamber_name_message">Присвойте этому ярлыку название для отображения с иконкой.</string>
+    <string name="chamber_name_toast">Использовать название по умолчанию</string>
 	
     <string name="quick_settings_music_schedule_title">Отключить таймер</string>
     <string name="quick_settings_music_schedule_in_progress">Таймер в процессе...</string>
@@ -66,5 +79,15 @@
 	
     <!-- Allow hiding notification icons -->
     <string name="status_bar_notification_hide_icon_packages">Скрыть иконку(и) уведомления у приложения(ий)</string>
-	
+
+    <!-- Battery status in pie controls -->
+    <string name="pie_battery_status_charging">Идёт зарядка (<xliff:g id="percent">%d</xliff:g>%%)</string>
+    <string name="pie_battery_status_full">Заряжено</string>
+    <string name="pie_battery_status_discharging"><xliff:g id="percent">%d</xliff:g>%% осталось</string>
+
+    <!-- Phone status in pie controls -->
+    <string name="pie_phone_status_no_service">Нет сети</string>
+    <string name="pie_phone_status_airplane_mode">Режим полёта</string>
+    <string name="pie_phone_status_emergency_only">Только экстренные вызовы</string>
+
 </resources>
