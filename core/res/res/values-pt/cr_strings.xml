@@ -4,5 +4,13 @@
 
   <!-- Error description on theme switch with ligtsensor mode enabled -->
   <string name="theme_auto_switch_mode_error">Modo de condição automática de luz está habilitada. Mudança pelo modo manual não é possível.</string>
+
+  <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_recordScreen">Gravar o contido sendo mostrado</string>
+  <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_recordScreen">Permitir o aplicativo a gravar a tela do usuário.</string>
+
+  <!-- label for screen record item in phone options dialog -->
+  <string name="global_action_screen_record">Gravador de tela</string>
   
 </resources>
