@@ -67,7 +67,8 @@
     <string name="chamber_name_title">Название ярлыка</string>
     <string name="chamber_name_message">Присвойте этому ярлыку название для отображения с иконкой.</string>
     <string name="chamber_name_toast">Использовать название по умолчанию</string>
-	
+
+    <!-- Quick Settings -->
     <string name="quick_settings_music_schedule_title">Отключить таймер</string>
     <string name="quick_settings_music_schedule_in_progress">Таймер в процессе...</string>
     <string name="quick_settings_music_schedule_start">Запуск таймера</string>
@@ -75,7 +76,17 @@
     <string name="quick_settings_music_schedule_update">Обновить таймер</string>
     <string name="quick_settings_theme_switch_dark">Тёмная тема</string>
     <string name="quick_settings_theme_switch_light">Светлая тема</string>
-    <string name="quick_settings_fcharge">Быстрая зарядка</string>
+    <string name="quick_settings_reminder">Напоминание</string>
+    <string name="quick_settings_reminder_title">Заголовок:</string>
+    <string name="quick_settings_reminder_message">Сообщение:</string>
+    <string name="quick_settings_reminder_time">Время напоминания</string>
+    <string name="quick_settings_reminder_set">Установить время</string>
+    <string name="quick_settings_reminder_update">Обновить время</string>
+    <string name="quick_settings_reminder_no_expire">Нет уведомления</string>
+    <string name="quick_settings_reminder_dismiss">Очистить напоминание</string>
+    <string name="quick_settings_reminder_dismiss_message">Очистить текущее напоминание?</string>
+    <string name="quick_settings_reminder_help_title">Нажмите:</string>
+    <string name="quick_settings_reminder_help_message">Нажмите здесь, чтобы установить напоминание. Нажмите и удерживайте, чтобы очистить текущее напоминание</string>
 	
     <!-- Allow hiding notification icons -->
     <string name="status_bar_notification_hide_icon_packages">Скрыть иконку(и) уведомления у приложения(ий)</string>
@@ -89,5 +100,8 @@
     <string name="pie_phone_status_no_service">Нет сети</string>
     <string name="pie_phone_status_airplane_mode">Режим полёта</string>
     <string name="pie_phone_status_emergency_only">Только экстренные вызовы</string>
+
+    <!-- Active Display -->
+    <string name="active_display_privacy_content">Содержание сообщения не отображается, потому что включен режим конфиденциальности</string>
 
 </resources>
