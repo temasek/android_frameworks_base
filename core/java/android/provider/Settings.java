@@ -3904,6 +3904,19 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_NOTIFICATIONS_COLOR = "lockscreen_notifications_color";
 
+
+        /**
+         * Sets the lockscreen background style
+         * @hide
+         */
+        public static final String LOCKSCREEN_BACKGROUND_STYLE = "lockscreen_background_style";
+
+        /**
+         * Color for lockscreen background when set to color fill
+         * @hide
+         */
+        public static final String LOCKSCREEN_BACKGROUND_COLOR = "lockscreen_background_color";
+
         /**
          * Action to perform when the menu key is long-pressed.
          * (Default is 0 on devices with a search key, 3 on devices without)
