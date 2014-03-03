@@ -3530,25 +3530,28 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         final Context context = mContext;
         final Resources res = context.getResources();
 
+        // TRDS
+        int uiThemeMode = res.getConfiguration().uiThemeMode;
+        
         // detect theme change.
         CustomTheme newTheme = res.getConfiguration().customTheme;
-        int uiThemeMode = res.getConfiguration().uiThemeMode;
         if (newTheme != null &&
                 (mCurrentTheme == null || !mCurrentTheme.equals(newTheme))) {
             mCurrentTheme = (CustomTheme)newTheme.clone();
             recreateStatusBar();
+            updateSettings();
+        } else {
 
-        if (uiThemeMode != mCurrUiThemeMode) {
-            mCurrUiThemeMode = uiThemeMode;
-            //recreateStatusBar();
-        }
+            // detect TRDS change
+            if (uiThemeMode != mCurrUiThemeMode) {
+                 mCurrUiThemeMode = uiThemeMode;
+            }
 
-        if (mClearButton instanceof TextView) {
+            if (mClearButton instanceof TextView) {
                 ((TextView)mClearButton).setText(context.getText(R.string.status_bar_clear_all_button));
             }
             loadDimens();
         }
-
         // Update the QuickSettings container
         if (mQS != null) mQS.updateResources();
     }
