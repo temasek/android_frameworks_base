@@ -31,4 +31,24 @@
     <string name="quick_settings_theme_switch_dark">Tema escuro</string>
     <string name="quick_settings_theme_switch_light">Tema claro</string>
 
+    <!-- Dialog Cancel/OK -->
+    <string name="cancel">Cancela</string>
+    <string name="dlg_ok">Ok</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+
+    <!-- Notifications reminders -->
+    <string name="quick_settings_reminder">Lembrete</string>
+    <string name="quick_settings_reminder_title">Título:</string>
+    <string name="quick_settings_reminder_message">Menssagem:</string>
+    <string name="quick_settings_reminder_time">Hora do lembrete</string>
+    <string name="quick_settings_reminder_set">Definir tempo</string>
+    <string name="quick_settings_reminder_update">Atualizar tempo</string>
+    <string name="quick_settings_reminder_no_expire">Sem notificação</string>
+    <string name="quick_settings_reminder_dismiss">Limpar lembrete</string>
+    <string name="quick_settings_reminder_dismiss_message">Limpar lembrete atual?</string>
+    <string name="quick_settings_reminder_help_title">Toque:</string>
+    <string name="quick_settings_reminder_noti_dismiss">Dispensar</string>
+    <string name="quick_settings_reminder_help_message">Toque aqui para definir o lembrete. Pressione por tempo longo para limpar o lembrete atual.</string>
+
 </resources>
