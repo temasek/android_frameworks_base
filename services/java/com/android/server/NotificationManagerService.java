@@ -672,7 +672,7 @@ public class NotificationManagerService extends INotificationManager.Stub
             final ComponentName component, final int userid) {
         final int permission = mContext.checkCallingPermission(
                 android.Manifest.permission.SYSTEM_NOTIFICATION_LISTENER);
-	if (permission == PackageManager.PERMISSION_DENIED)) {
+	if (permission == PackageManager.PERMISSION_DENIED) {
             checkCallerIsSystem();
         }        
 
