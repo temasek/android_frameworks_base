@@ -177,10 +177,6 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     private boolean mCustomRecent = false;
 
-    public Ticker getTicker() {
-        return mTicker;
-    }
-
     public IStatusBarService getService() {
         return mBarService;
     }
