@@ -177,5 +177,5 @@
         <!-- Note: must be dp to fit in status bar -->
         <item name="android:textSize">14dp</item>
     </style>
-    
+
 </resources>
