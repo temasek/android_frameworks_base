@@ -49,6 +49,6 @@
     <string name="quick_settings_reminder_dismiss_message">Limpar lembrete atual?</string>
     <string name="quick_settings_reminder_help_title">Toque:</string>
     <string name="quick_settings_reminder_noti_dismiss">Dispensar</string>
-    <string name="quick_settings_reminder_help_message">Toque aqui para definir o lembrete. Pressione por tempo longo para limpar o lembrete atual.</string>
+    <string name="quick_settings_reminder_help_message">Toque no espaço vazio acima para definir o lembrete. Pressione por tempo longo para limpar o lembrete atual.</string>
 
 </resources>
