@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Power menu -->
+    <string name="quick_settings_powermenu_label">Меню питания</string>
+
+    <!-- Recents Ram Bar -->
+    <string name="memory">RAM</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
+    <string name="service_free_mem"><xliff:g id="memory">%1$s</xliff:g> свободно</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
+    <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> занято</string>
+
+    <string name="status_bar_notification_hide_icon_packages">Скрыть иконку(и) уведомления у приложения(ий)</string>
+
+    <!-- TRDS -->
+    <string name="quick_settings_theme_switch_dark">Тёмная тема</string>
+    <string name="quick_settings_theme_switch_light">Светлая тема</string>
+
+    <!-- Dialog Cancel/OK -->
+    <string name="cancel">Отмена</string>
+    <string name="dlg_ok">Ok</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+    <!-- Notifications reminders -->
+    <string name="quick_settings_reminder">Напоминание</string>
+    <string name="quick_settings_reminder_title">Заголовок:</string>
+    <string name="quick_settings_reminder_message">Сообщение:</string>
+    <string name="quick_settings_reminder_time">Время напоминания</string>
+    <string name="quick_settings_reminder_set">Установить время</string>
+    <string name="quick_settings_reminder_update">Обновить время</string>
+    <string name="quick_settings_reminder_no_expire">Нет уведомления</string>
+    <string name="quick_settings_reminder_dismiss">Очистить напоминание</string>
+    <string name="quick_settings_reminder_dismiss_message">Очистить текущее напоминание?</string>
+    <string name="quick_settings_reminder_help_title">Нажмите:</string>
+    <string name="quick_settings_reminder_noti_dismiss">Отклонить</string>
+    <string name="quick_settings_reminder_help_message">Нажмите здесь, чтобы установить напоминание. Нажмите и удерживайте, чтобы очистить текущее напоминание</string>
+
+    <!-- Slim recents -->
+    <string name="status_bar_recent_playstore_item_title">Play Store</string>
+    <string name="status_bar_recent_amazon_item_title">Amazon Store</string>
+
+</resources>
