@@ -393,7 +393,7 @@ public class KeyguardViewManager {
                 setBackground(mBackgroundDrawable);
             } else {
                 Drawable old = mCustomBackground;
-                if (getWidth() == 0 || getHeight() == 0) {
+                if (getWidth() <= 0 || getHeight() <= 0) {
                     d = null;
                 }
                 if (old == null && d == null) {
