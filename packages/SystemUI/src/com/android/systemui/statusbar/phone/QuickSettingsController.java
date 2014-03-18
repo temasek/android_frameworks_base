@@ -110,7 +110,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class QuickSettingsController {
-    private static String TAG = "QuickSettingsController";
+    private static final String TAG = "QuickSettingsController";
 
     // Stores the broadcast receivers and content observers
     // quick tiles register for.
@@ -301,7 +301,9 @@ public class QuickSettingsController {
 	    } else if (tile.equals(TILE_POWER)) {
                 qs = new PowerMenuTile(mContext, this);
             } else if (tile.equals(TILE_THEME)) {
-                qs = new ThemeTile(mContext, this);     
+                qs = new ThemeTile(mContext, this);
+            } else if (tile.equals(TILE_ONTHEGO)) {
+                qs = new OnTheGoTile(mContext, this);     
             }
 
             if (qs != null) {
@@ -478,7 +480,7 @@ public class QuickSettingsController {
                 }
             }
         }
-    };
+    }
 
     void setBar(PanelBar bar) {
         mBar = bar;
