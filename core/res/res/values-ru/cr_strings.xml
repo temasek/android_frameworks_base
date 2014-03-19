@@ -30,4 +30,7 @@
     <string name="animation_grow_shrink_right">Увеличивается (справа)</string>
     <string name="action_null">Не назначено</string>
 
+   <!-- label for item that takes On-The-Go in the phone options dialog -->
+   <string name="global_action_onthego">Режим \"В движении\"</string>
+
 </resources>
