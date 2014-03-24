@@ -8,9 +8,12 @@
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <string name="permlab_recordScreen">Gravar o contido sendo mostrado</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_recordScreen">Permitir o aplicativo a gravar a tela do usuário.</string>
+  <string name="permdesc_recordScreen">Permitir o aplicativo à gravar a tela do usuário.</string>
 
   <!-- label for screen record item in phone options dialog -->
   <string name="global_action_screen_record">Gravador de tela</string>
+
+  <!-- label for item that takes On-The-Go in the phone options dialog -->
+  <string name="global_action_onthego">Modo em movimento</string>
   
 </resources>

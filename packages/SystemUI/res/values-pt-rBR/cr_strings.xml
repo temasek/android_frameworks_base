@@ -2,22 +2,6 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Content description of the halo button in the notification panel for accessibility (not sho
-         wn on the screen). [CHAR LIMIT=NONE] -->  
-    <string name="accessibility_halo">Criar notificação halo.</string>
-
-    <!-- HALO -->
-    <string name="halo_dismiss">Dispensar notificação</string>
-    <string name="halo_hide">Esconder</string>
-    <string name="halo_clear_all">Dispensar todas as notificações</string>
-    <string name="halo_silence">Esconder &amp; silenciar até ser acordado </string>
-    <string name="halo_tutorial1">Esse é o HALO</string>
-    <string name="halo_tutorial2">Mova me: 2x-toque &amp; arraste</string>
-    <string name="halo_tutorial3">Procurar tarefas: Arrastar horizontalmente</string>
-
-    <!-- Power menu -->
-    <string name="quick_settings_powermenu_label">Power Menu</string>
-
     <!-- Recents Ram Bar -->
     <string name="memory">RAM</string>
     <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
@@ -50,5 +34,31 @@
     <string name="quick_settings_reminder_help_title">Toque:</string>
     <string name="quick_settings_reminder_noti_dismiss">Dispensar</string>
     <string name="quick_settings_reminder_help_message">Toque no espaço vazio acima para definir o lembrete. Pressione por tempo longo para limpar o lembrete atual.</string>
+
+    <!-- Long-press back kill application -->
+    <string name="app_killed_message">Aplicativo matado</string>
+
+    <!-- On-the-go -->
+    <string name="onthego_notif_ticker">Em movimento ativado</string>
+    <string name="onthego_notif_title">Em movimento está ativado</string>
+    <string name="onthego_notif_stop">Parar</string>
+    <string name="onthego_notif_options">Opções</string>
+    <string name="onthego_notif_error">Não possível iniciar o modo em movimento</string>
+    <string name="onthego_notif_restart">Reiniciar modo em movimento</string>
+    <string name="onthego_notif_camera_changed">Modo de câmera alterado</string>
+    <string name="onthego_transparency">Transparência</string>
+    <string name="onthego_front_camera">Usar câmera frontal</string>
+    <string name="onthego_service_toggle">Reiniciar o serviço automaticamente</string>
+    <string name="quick_settings_onthego_back">Câmera traseira</string>
+    <string name="quick_settings_onthego_front">Câmera frontal</string>
+
+    <!-- [CHAR LIMIT=30] Location settings screen, high accuracy location mode -->
+    <string name="location_mode_high_accuracy_title">Alta precisão</string>
+    <!-- [CHAR LIMIT=30] Location settings screen, battery saving location mode -->
+    <string name="location_mode_battery_saving_title">Economia de bateria</string>
+    <!-- [CHAR LIMIT=30] Location settings screen, device only location mode -->
+    <string name="location_mode_sensors_only_title">Somente aparelho</string>
+    <!-- [CHAR LIMIT=30] Location settings screen, location off mode -->
+    <string name="location_mode_location_off_title">Localização desligada</string>
 
 </resources>
