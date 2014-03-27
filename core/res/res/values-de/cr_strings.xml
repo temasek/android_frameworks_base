@@ -11,7 +11,7 @@
   <string name="permdesc_recordScreen">Erlaubt der Anwendung den Bildschirm aufzunehmen.</string>
 
   <!-- label for screen record item in phone options dialog -->
-  <string name="global_action_screen_record">Bildschirm aufnehmen</string>
+  <string name="global_action_screen_record">Bildschirmaufnahme</string>
 
    <!-- Animation Strings -->
    <string name="animation_fade">Überblenden</string>
@@ -27,7 +27,7 @@
    <string name="animation_grow_shrink_center">Vergrößern (Zentriert)</string>
    <string name="animation_grow_shrink_bottom">Vergrößern (Unten)</string>
    <string name="animation_grow_shrink_left">Vergrößern (Links)</string>
-   <string name="animation_grow_shrink_right">Vergrößen (Rechts)</string>
+   <string name="animation_grow_shrink_right">Vergrößern (Rechts)</string>
    <string name="action_null">Frei</string>
 
    <!-- label for item that takes On-The-Go in the phone options dialog -->
