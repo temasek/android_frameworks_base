@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <!-- Error description on theme switch with ligtsensor mode enabled -->
+  <string name="theme_auto_switch_mode_error">Automatische UI Änderung aktiviert. Manuelles Umschalten nicht möglich.</string>
+  
+  <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_recordScreen">Inhalt der Aufnahme wird angezeigt.</string>
+  <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_recordScreen">Erlaubt der Anwendung den Bildschirm aufzunehmen.</string>
+
+  <!-- label for screen record item in phone options dialog -->
+  <string name="global_action_screen_record">Bildschirmaufnahme</string>
+
+   <!-- Animation Strings -->
+   <string name="animation_fade">Überblenden</string>
+   <string name="animation_slide_right">Gleiten (Rechts)</string>
+   <string name="animation_slide_left">Gleiten (Links)</string>
+   <string name="animation_slide_right_no_fade">Gleiten ohne Überblenden (Rechts)</string>
+   <string name="animation_slide_left_no_fade">Gleiten ohne Überblenden (Links)</string>
+   <string name="animation_slide_up">Gleiten (Unten)</string>
+   <string name="animation_slide_down">Gleiten (Oben)</string>
+   <string name="animation_default">Standard</string>
+   <string name="animation_translucent">Durchsichtig</string>
+   <string name="animation_grow_shrink">Vergrößern (Oben)</string>
+   <string name="animation_grow_shrink_center">Vergrößern (Zentriert)</string>
+   <string name="animation_grow_shrink_bottom">Vergrößern (Unten)</string>
+   <string name="animation_grow_shrink_left">Vergrößern (Links)</string>
+   <string name="animation_grow_shrink_right">Vergrößern (Rechts)</string>
+   <string name="action_null">Frei</string>
+
+   <!-- label for item that takes On-The-Go in the phone options dialog -->
+   <string name="global_action_onthego">On-The-Go Modus</string>
+
+</resources>
