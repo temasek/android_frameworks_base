@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <!-- Error description on theme switch with ligtsensor mode enabled -->
+    <string name="theme_auto_switch_mode_error">Включен режим автоматической смены темы при изменении освещенности. Ручное переключение невозможно.</string>
+  
+  <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_recordScreen">Записывать контент, отображаемый на экране</string>
+  <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_recordScreen">Разрешить приложению производить запись пользовательского экрана</string>
+
+  <!-- label for screen record item in phone options dialog -->
+  <string name="global_action_screen_record">Запись с экрана</string>
+
+   <!-- Animation Strings -->
+    <string name="animation_fade">Изчезающая</string>
+    <string name="animation_slide_right">Сдвиг вправо</string>
+    <string name="animation_slide_left">Сдвиг влево</string>
+    <string name="animation_slide_right_no_fade">Сдвиг вправо (без исчезновения)</string>
+    <string name="animation_slide_left_no_fade">Сдвиг влево (без исчезновения)</string>
+    <string name="animation_slide_up">Сдвиг вниз</string>
+    <string name="animation_slide_down">Сдвиг вверх</string>
+    <string name="animation_default">По умолчанию</string>
+    <string name="animation_translucent">Прозрачная</string>
+    <string name="animation_grow_shrink">Увеличивается (вверху)</string>
+    <string name="animation_grow_shrink_center">Увеличивается (в центре)</string>
+    <string name="animation_grow_shrink_bottom">Увеличивается (внизу)</string>
+    <string name="animation_grow_shrink_left">Увеличивается (слева)</string>
+    <string name="animation_grow_shrink_right">Увеличивается (справа)</string>
+    <string name="action_null">Не назначено</string>
+
+   <!-- label for item that takes On-The-Go in the phone options dialog -->
+   <string name="global_action_onthego">Режим \"На ходу\"</string>
+
+</resources>
