@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Power menu -->
+    <string name="quick_settings_powermenu_label">Ein/Aus-Menü</string>
+
+    <!-- Recents Ram Bar -->
+    <string name="memory">Arbeitsspeicher</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
+    <string name="service_free_mem"><xliff:g id="memory">%1$s</xliff:g> frei</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
+    <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> genutzt</string>
+
+    <string name="status_bar_notification_hide_icon_packages">Verstecke Benachrichtigungssymbole in der Statusleiste.</string>
+
+    <!-- Dialog Cancel/OK -->
+    <string name="cancel">Abbrechen</string>
+    <string name="dlg_ok">Ok</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+
+    <!-- Notifications reminders -->
+    <string name="quick_settings_reminder">Erinnerungsereignis erstellen</string>
+    <string name="quick_settings_reminder_title">Name des Ereignisses:</string>
+    <string name="quick_settings_reminder_message">Ihre Nachricht:</string>
+    <string name="quick_settings_reminder_time">Erinnerungszeitpunkt</string>
+    <string name="quick_settings_reminder_set">Zeitpunkt festlegen</string>
+    <string name="quick_settings_reminder_update">Aktualisierungszeit</string>
+    <string name="quick_settings_reminder_no_expire">Keine Benachrichtigung</string>
+    <string name="quick_settings_reminder_dismiss">Benachrichtigung löschen</string>
+    <string name="quick_settings_reminder_dismiss_message">Aktuelle Erinnerung löschen und das Feature deaktivieren?</string>
+    <string name="quick_settings_reminder_help_title">BERÜHREN</string>
+    <string name="quick_settings_reminder_noti_dismiss">Verwerfen</string>
+    <string name="quick_settings_reminder_help_message">Berühren, um eine Erinnerung festzulegen. Gedrückt halten zum Löschen.</string></string>
+
+    <!-- Slim recents -->
+    <string name="status_bar_recent_playstore_item_title">Play Store</string>
+    <string name="status_bar_recent_amazon_item_title">Amazon Store</string>
+
+    <!-- [CHAR LIMIT=30] Location settings screen, high accuracy location mode -->
+    <string name="location_mode_high_accuracy_title">Höhere Genauigkeit</string>
+    <!-- [CHAR LIMIT=30] Location settings screen, battery saving location mode -->
+    <string name="location_mode_battery_saving_title">Energiesparen</string>
+    <!-- [CHAR LIMIT=30] Location settings screen, device only location mode -->
+    <string name="location_mode_sensors_only_title">Nur das Gerät</string>
+    <!-- [CHAR LIMIT=30] Location settings screen, location off mode -->
+    <string name="location_mode_location_off_title">Standort ausgeschaltet</string>
+
+    <!-- On The Go -->
+    <string name="onthego_notif_ticker">On-The-Go Modus aktiviert</string>
+    <string name="onthego_notif_title">On-The-Go Modus wurde aktiviert.</string>
+    <string name="onthego_notif_stop">Anhalten</string>
+    <string name="onthego_notif_options">Einstellungen</string>
+    <string name="onthego_notif_error">Starten des On-The-Go Features nicht möglich.</string>
+    <string name="onthego_notif_restart">On-The-Go Modus neustarten</string>
+    <string name="onthego_notif_camera_changed">Kameramodus geändert</string>
+    <string name="onthego_transparency">UI Transparenz</string>
+    <string name="onthego_front_camera">Vordere Kamera benutzen</string>
+    <string name="onthego_service_toggle">Automatisch neustarten</string>
+    <string name="quick_settings_onthego_back">Hintere Kamera</string>
+    <string name="quick_settings_onthego_front">Vordere Kamera</string>
+
+</resources>
