@@ -28,12 +28,26 @@
     <string name="accessibility_quick_settings_data_on">Mobilní data zapnuta</string>
     <string name="accessibility_quick_settings_roaming_off">Roaming vypnut</string>
     <string name="accessibility_quick_settings_roaming_on">Roaming zapnut</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Určování polohy: úspora baterie.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Určování polohy: pouze zařízení.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Určování polohy: vysoká přesnost.</string>
     <string name="accessibility_su_active">Superuser přístup je aktivní</string>
     <string name="quick_settings_mobile_data_label">Mobilní data</string>
     <string name="quick_settings_roaming_label">Roaming</string>
     <string name="quick_settings_apn_switch_label">APN přepínač</string>
     <string name="quick_settings_dds_sub">Karta <xliff:g id="number">%d</xliff:g> data</string>
-    <string name="quick_settings_data_off">Data vypnuty</string>
+    <string name="quick_settings_data_off">Mobilní data vypnuta</string>
+    <string name="quick_settings_location_battery_saving_label">Úspora baterie</string>
+    <string name="quick_settings_location_gps_only_label">Pouze zařízení</string>
+    <string name="quick_settings_location_high_accuracy_label">Vysoká přesnost</string>
+    <string name="quick_settings_location_detail_title">Poloha</string>
+    <string name="quick_settings_location_detail_menu_title">Vybrat režim:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Vysoká přesnost</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Úspora baterie</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze zařízení</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Použít GPS, Wi\u2011Fi a mobilní sítě pro určování polohy</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">Použít Wi\u2011Fi a mobilní sítě pro určování polohy</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Použít GPS pro určování polohy</string>
     <string name="tasklistview_title">Správce úloh</string>
     <string name="message_switch_fail">Není možné přepnout na tuto úlohu, protože nemá žádné rozhraní.</string>
     <string name="tasklist_killall">Ukončit vše</string>

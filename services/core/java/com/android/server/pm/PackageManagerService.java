@@ -4756,25 +4756,13 @@ public class PackageManagerService extends IPackageManager.Stub {
             if (lowThreshold == 0) {
                 throw new IllegalStateException("Invalid low memory threshold");
             }
-
-            PackageManager pm = null;;
-            if (mContext != null)
-                pm = mContext.getPackageManager();
-            String n = null;
-
             for (PackageParser.Package pkg : sortedPkgs) {
                 long usableSpace = dataDir.getUsableSpace();
                 if (usableSpace < lowThreshold) {
                     Log.w(TAG, "Not running dexopt on remaining apps due to low memory: " + usableSpace);
                     break;
                 }
-                if (pm != null)
-                    n = (String)pkg.applicationInfo.loadLabel(pm);
-                if (n == null || n.length() == 0)
-                    n = pkg.packageName;
-                final String name = "\n"+n;
-                n = null;
-                performBootDexOpt(pkg, ++i, total, name);
+                performBootDexOpt(pkg, ++i, total);
             }
         }
     }
@@ -4832,21 +4820,20 @@ public class PackageManagerService extends IPackageManager.Stub {
     }
 
     private void performBootDexOpt(PackageParser.Package pkg, int curr, int total) {
-        performBootDexOpt(pkg, curr, total, "");
-    }
-
-    private void performBootDexOpt(PackageParser.Package pkg, int curr, int total, String pkgname) {
         if (DEBUG_DEXOPT) {
             Log.i(TAG, "Optimizing app " + curr + " of " + total + ": " + pkg.packageName);
         }
-        if (!isFirstBoot()) {
-            try {
-                ActivityManagerNative.getDefault().showBootMessage(
-                        mContext.getResources().getString(R.string.android_upgrading_apk,
-                                curr, total, pkgname), true);
-            } catch (RemoteException e) {
-            }
+
+        final int messageRes = isFirstBoot() ?
+                R.string.android_installing_apk : R.string.android_upgrading_apk;
+
+        try {
+            ActivityManagerNative.getDefault().showBootMessage(
+                    mContext.getResources().getString(messageRes,
+                            curr, total), true);
+        } catch (RemoteException e) {
         }
+
         PackageParser.Package p = pkg;
         synchronized (mInstallLock) {
             performDexOptLI(p, null /* instruction sets */, false /* force dex */,
