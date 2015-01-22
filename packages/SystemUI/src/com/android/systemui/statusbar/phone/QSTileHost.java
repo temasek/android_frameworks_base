@@ -36,13 +36,16 @@ import com.android.systemui.qs.QSTile;
 import com.android.systemui.qs.tiles.AdbOverNetworkTile;
 import com.android.systemui.qs.tiles.AirplaneModeTile;
 import com.android.systemui.qs.tiles.ApnTile;
+import com.android.systemui.qs.tiles.BatterySaverTile;
 import com.android.systemui.qs.tiles.BluetoothTile;
+import com.android.systemui.qs.tiles.BrightnessTile;
 import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
 import com.android.systemui.qs.tiles.CompassTile;
 import com.android.systemui.qs.tiles.DataTile;
 import com.android.systemui.qs.tiles.DdsTile;
+import com.android.systemui.qs.tiles.ExpandedDesktopTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.IntentTile;
@@ -57,9 +60,11 @@ import com.android.systemui.qs.tiles.PowerMenuTile;
 import com.android.systemui.qs.tiles.RoamingTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.VisualizerTile;
+import com.android.systemui.qs.tiles.ScreenOffTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
 import com.android.systemui.qs.tiles.ScreenTimeoutTile;
 import com.android.systemui.qs.tiles.SyncTile;
+import com.android.systemui.qs.tiles.VisualizerTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.settings.CurrentUserTracker;
 import com.android.systemui.statusbar.policy.BluetoothController;
@@ -327,6 +332,14 @@ public class QSTileHost implements QSTile.Host {
                 return new ScreenshotTile(this);
             case QSConstants.TILE_SYNC:
                 return new SyncTile(this);
+            case QSConstants.TILE_BATTERY_SAVER:
+                return new BatterySaverTile(this);
+            case QSConstants.TILE_BRIGHTNESS:
+                return new BrightnessTile(this);
+            case QSConstants.TILE_EXPANDED_DESKTOP:
+                return new ExpandedDesktopTile(this);
+            case QSConstants.TILE_SCREEN_OFF:
+                return new ScreenOffTile(this);
             default:
                 throw new IllegalArgumentException("Bad tile spec: " + tileSpec);
         }
