@@ -16,6 +16,7 @@
 
 package com.android.systemui.volume;
 
+import android.animation.LayoutTransition;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -477,6 +478,11 @@ public class VolumePanel extends Handler {
             window.findViewById(com.android.systemui.R.id.zen_mode_panel_bg_container)
                 .setBackground(null);
         }
+
+        LayoutTransition lt = new LayoutTransition();
+        lt.disableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
+        lt.disableTransitionType(LayoutTransition.DISAPPEARING);
+        mSliderPanel.setLayoutTransition(lt);
     }
 
     public VolumePanel(Context context, ZenModeController zenController) {
@@ -1507,12 +1513,12 @@ public class VolumePanel extends Handler {
 
             case MSG_TIMEOUT: {
                 if (isShowing()) {
-                    hideVolumePanel();
                     if (mDialog != null) {
                         mView.animate().y(-mView.getHeight())
                                 .setDuration(ANIMATION_DURATION)
                                 .withEndAction(new Runnable() {
                             public void run() {
+                                hideVolumePanel();
                                 mDialog.dismiss();
                                 clearRemoteStreamController();
                                 mActiveStreamType = -1;
