@@ -77,4 +77,21 @@
     <string name="navbar_menu_conditional_button">Tlačítko menu (automaticky skryté)</string>
     <string name="navbar_menu_always_button">Tlačítko menu (vždy zobrazené)</string>
     <string name="navbar_menu_big_button">Tlačítko menu</string>
+    <!-- Navigation ring shortcuts -->
+    <string name="navigation_ring_title">Zkratky rychlého spuštění</string>
+    <string name="navring_target_reset_message">Smazat všechny uživatelsky vytvořené zkratky navigační lišty a obnovit do výchozího stavu?</string>
+    <string name="navring_target_reset">Zkratky navigační lišty byly obnoveny do původního nastavení</string>
+    <string name="navring_action_open_ime_switcher">Otevřít výběr metody vstupu</string>
+    <string name="navring_action_kill_app">Ukončit aplikaci</string>
+    <string name="navring_action_none">Nic</string>
+    <string name="navring_action_take_screenshot">Pořídit snímek obrazovky</string>
+    <string name="navring_action_ring_vibrate">Hlasitě/Vibrace</string>
+    <string name="navring_action_ring_silent">Hlasitě/Potichu</string>
+    <string name="navring_action_ring_vibrate_silent">Hlasitě/Vibrace/Potichu</string>
+    <string name="navring_action_screen_off">Vypnout obrazovku</string>
+    <string name="navring_action_torch">Přepnout svítilnu</string>
+    <string name="navring_action_google_now">Google Now</string>
+    <string name="navring_choose_action_title">Vybrat akci</string>
+    <string name="select_application">Vybrat aplikaci</string>
+    <string name="lockscreen_target_empty">Prázdné</string>
 </resources>
