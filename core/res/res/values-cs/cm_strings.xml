@@ -143,4 +143,6 @@
     <string name="theme_reset_notification_body">Systémové téma bylo obnoveno kvůli opakovaným pádům aplikace.</string>
     <string name="permlab_interceptSmsSent">kontrolovat odchozí SMS</string>
     <string name="permdesc_interceptSmsSent">Umožnit aplikaci kontrolovat odchozí SMS zprávy. Allows the app to intercept an outgoing SMS. Škodlivým aplikacím tato vobla zabrání odesílání nechtěných SMS zpráv.</string>
+    <string name="permlab_preventpower">přenastavit zapínací tlačítko</string>
+    <string name="permdesc_preventpower">Umožnit aplikaci přenastavit zapínací tlačítko.</string>
 </resources>
