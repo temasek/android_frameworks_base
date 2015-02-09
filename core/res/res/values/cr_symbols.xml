@@ -100,4 +100,7 @@
   <java-symbol type="drawable" name="ic_shortcut_action_screenshot" />
   <java-symbol type="drawable" name="ic_shortcut_action_search" />
 
+  <!-- ScreenRecorder -->
+  <java-symbol type="bool" name="config_enableScreenrecordChord" />
+
 </resources>

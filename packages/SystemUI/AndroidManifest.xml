@@ -133,6 +133,9 @@
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
+    <!-- ScreenRecorder -->
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+
     <!-- Action target -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
 
@@ -168,6 +171,12 @@
 
         <receiver android:name=".screenshot.DeleteScreenshot"
                 android:exported="true" />
+
+        <!-- started from PhoneWindowManager
+             TODO: Should have an android:permission attribute -->
+        <service android:name=".omni.screenrecord.TakeScreenrecordService"
+            android:process=":screenrecord"
+            android:exported="false" />
 
         <service android:name=".LoadAverageService"
                 android:exported="true" />
