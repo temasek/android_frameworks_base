@@ -247,9 +247,6 @@
     <string name="perf_profile_bal">Balanced</string>
     <string name="perf_profile_perf">Performance</string>
 
-    <!-- Advanced settings -->
-    <string name="advanced_settings_title">Advanced</string>
-
     <!-- Theme installation error notification -->
     <string name="theme_install_error_title">Failed to install theme</string>
     <string name="theme_install_error_message">%s failed to install</string>
