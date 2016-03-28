@@ -16,6 +16,7 @@
 
 package com.android.server.usage;
 
+import android.app.ActivityManager;
 import android.app.usage.ConfigurationStats;
 import android.app.usage.TimeSparseArray;
 import android.app.usage.UsageEvents;
@@ -294,9 +295,13 @@ class UserUsageStatsService {
         if (intervalType == UsageStatsManager.INTERVAL_BEST) {
             intervalType = mDatabase.findBestFitBucket(beginTime, endTime);
             if (intervalType < 0) {
-                // Nothing saved to disk yet, so every stat is just as equal (no rollover has
-                // occurred.
-                intervalType = UsageStatsManager.INTERVAL_DAILY;
+                if(ActivityManager.isUserAMonkey()) {
+                    intervalType = UsageStatsManager.INTERVAL_WEEKLY;
+                } else {
+                    // Nothing saved to disk yet, so every stat is just as equal (no rollover has
+                    // occurred.
+                    intervalType = UsageStatsManager.INTERVAL_DAILY;
+                }
             }
         }
 
