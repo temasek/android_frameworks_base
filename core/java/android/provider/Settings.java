@@ -4995,6 +4995,12 @@ public final class Settings {
          * @hide
          */
         public static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
+        
+        /**
+         * Network stats Color style
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_HIDE_ARROW = "network_traffic_hide_arrow";
 
         /**
          * Option to launch slim actions in floating mode
