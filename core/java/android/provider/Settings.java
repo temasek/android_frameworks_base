@@ -3398,6 +3398,12 @@ public final class Settings {
         public static final String MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD =
                 "mute_annoying_notifications_threshold";
 
+         /**
+           * Whether to use the MTP by default after connecting to PC
+           * @hide
+           */
+         public static final String MTP_DIRTY_HACK = "mtp_dirty_hack";
+
         /**
          * Whether to use the proximity sensor to turn the screen on/off during a call
          * @hide
