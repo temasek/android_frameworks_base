@@ -6515,10 +6515,12 @@ public class TextView extends View implements ViewTreeObserver.OnPreDrawListener
             case TEXT_ALIGNMENT_GRAVITY:
                 switch (mGravity & Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK) {
                     case Gravity.START:
-                        alignment = Layout.Alignment.ALIGN_NORMAL;
+                        alignment = !isLayoutRtl() ? Layout.Alignment.ALIGN_NORMAL :
+                                Layout.Alignment.ALIGN_RIGHT;
                         break;
                     case Gravity.END:
-                        alignment = Layout.Alignment.ALIGN_OPPOSITE;
+                        alignment = !isLayoutRtl() ? Layout.Alignment.ALIGN_OPPOSITE :
+                                Layout.Alignment.ALIGN_LEFT;
                         break;
                     case Gravity.LEFT:
                         alignment = Layout.Alignment.ALIGN_LEFT;
