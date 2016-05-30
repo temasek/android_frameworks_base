@@ -25,7 +25,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManagerNative;
-import android.app.INotificationManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -255,6 +254,8 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected WindowManager mWindowManager;
     protected IWindowManager mWindowManagerService;
 
+    private NotificationManager mNoMan;
+
     protected abstract void refreshLayout(int layoutDirection);
 
     protected Display mDisplay;
@@ -293,7 +294,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     private NotificationClicker mNotificationClicker = new NotificationClicker();
 
     protected AssistManager mAssistManager;
-    private INotificationManager mNoMan;
 
     public int getNotificationCount() {
         return mNotificationData.getActiveNotifications().size();
@@ -534,9 +534,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                     }
                 }
             } else if (BANNER_ACTION_CANCEL.equals(action) || BANNER_ACTION_SETUP.equals(action)) {
-                NotificationManager noMan = (NotificationManager)
-                        mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-                noMan.cancel(R.id.notification_hidden);
+                mNoMan.cancel(R.id.notification_hidden);
 
                 Settings.Secure.putInt(mContext.getContentResolver(),
                         Settings.Secure.SHOW_NOTE_ABOUT_NOTIFICATION_HIDING, 0);
@@ -665,6 +663,9 @@ public abstract class BaseStatusBar extends SystemUI implements
     public void start() {
         mWindowManager = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
         mWindowManagerService = WindowManagerGlobal.getWindowManagerService();
+
+        mNoMan = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+
         mDisplay = mWindowManager.getDefaultDisplay();
         mDevicePolicyManager = (DevicePolicyManager)mContext.getSystemService(
                 Context.DEVICE_POLICY_SERVICE);
@@ -679,8 +680,6 @@ public abstract class BaseStatusBar extends SystemUI implements
         mDreamManager = IDreamManager.Stub.asInterface(
                 ServiceManager.checkService(DreamService.DREAM_SERVICE));
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        mNoMan = (INotificationManager) INotificationManager.Stub.asInterface(
-                ServiceManager.getService(Context.NOTIFICATION_SERVICE));
 
         mContext.getContentResolver().registerContentObserver(
                 Settings.Global.getUriFor(Settings.Global.DEVICE_PROVISIONED), true,
@@ -903,9 +902,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                             mContext.getString(R.string.hidden_notifications_setup),
                             setupIntent);
 
-            NotificationManager noMan =
-                    (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            noMan.notify(R.id.notification_hidden, note.build());
+            mNoMan.notify(R.id.notification_hidden, note.build());
         }
     }
 
@@ -2227,12 +2224,18 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     private boolean shouldShowOnKeyguard(StatusBarNotification sbn) {
-        boolean keyguard = true;
-        try {
-            keyguard = mNoMan.getPackageKeyguard(sbn.getPackageName(), sbn.getUid());
-        } catch (RemoteException e) {
+        if (!mShowLockscreenNotifications || mNotificationData.isAmbient(sbn.getKey())) {
+            return false;
         }
-        return mShowLockscreenNotifications && !mNotificationData.isAmbient(sbn.getKey()) && keyguard;
+        final int showOnKeyguard = mNoMan.getShowNotificationForPackageOnKeyguard(
+                sbn.getPackageName(), sbn.getUid());
+        boolean isKeyguardAllowedForApp =
+                (showOnKeyguard & Notification.SHOW_ALL_NOTI_ON_KEYGUARD) != 0;
+        if (isKeyguardAllowedForApp && sbn.isOngoing()) {
+            isKeyguardAllowedForApp =
+                    (showOnKeyguard & Notification.SHOW_NO_ONGOING_NOTI_ON_KEYGUARD) == 0;
+        }
+        return isKeyguardAllowedForApp;
     }
 
     protected void setZenMode(int mode) {
