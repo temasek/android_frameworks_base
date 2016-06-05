@@ -774,6 +774,10 @@ public class UsbDeviceManager {
             if (mNotificationManager == null || !mUseUsbNotification) return;
             int id = 0;
             Resources r = mContext.getResources();
+            if (Settings.System.getInt(mContext.getContentResolver(),
+                      Settings.System.MTP_DIRTY_HACK, 1) == 1) {
+ 		        mUsbDataUnlocked = true;
+ 	        }            
             if (mConnected || mHostConnected) {
                 if (!mUsbDataUnlocked) {
                     id = com.android.internal.R.string.usb_charging_notification_title;
